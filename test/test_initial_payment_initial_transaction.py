@@ -42,6 +42,7 @@ class TestInitialPaymentInitialTransaction(unittest.TestCase):
             )
         else:
             return InitialPaymentInitialTransaction(
+                type = 'UNKNOWN',
         )
         """
 

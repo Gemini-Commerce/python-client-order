@@ -32,15 +32,19 @@ class OrderDataCustomerInfo(BaseModel):
     OrderDataCustomerInfo
     """ # noqa: E501
     grn: Optional[StrictStr] = None
-    firstname: Optional[StrictStr] = None
-    lastname: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
+    firstname: StrictStr
+    lastname: StrictStr
+    email: StrictStr
     phone: Optional[StrictStr] = None
     segment: Optional[StrictStr] = None
     data: Optional[StrictStr] = None
     certified_email: Optional[StrictStr] = Field(default=None, alias="certifiedEmail")
     tax_code: Optional[StrictStr] = Field(default=None, alias="taxCode")
-    __properties: ClassVar[List[str]] = ["grn", "firstname", "lastname", "email", "phone", "segment", "data", "certifiedEmail", "taxCode"]
+    sdi_code: Optional[StrictStr] = Field(default=None, alias="sdiCode")
+    fiscal_code: Optional[StrictStr] = Field(default=None, alias="fiscalCode")
+    company_name: Optional[StrictStr] = Field(default=None, alias="companyName")
+    agent_grn: Optional[StrictStr] = Field(default=None, alias="agentGrn")
+    __properties: ClassVar[List[str]] = ["grn", "firstname", "lastname", "email", "phone", "segment", "data", "certifiedEmail", "taxCode", "sdiCode", "fiscalCode", "companyName", "agentGrn"]
 
     model_config = {
         "populate_by_name": True,
@@ -99,7 +103,11 @@ class OrderDataCustomerInfo(BaseModel):
             "segment": obj.get("segment"),
             "data": obj.get("data"),
             "certifiedEmail": obj.get("certifiedEmail"),
-            "taxCode": obj.get("taxCode")
+            "taxCode": obj.get("taxCode"),
+            "sdiCode": obj.get("sdiCode"),
+            "fiscalCode": obj.get("fiscalCode"),
+            "companyName": obj.get("companyName"),
+            "agentGrn": obj.get("agentGrn")
         })
         return _obj
 

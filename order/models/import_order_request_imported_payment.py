@@ -20,7 +20,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from order.models.order_payment_amount import OrderPaymentAmount
 from order.models.payment_cc_info import PaymentCcInfo
@@ -33,11 +33,12 @@ class ImportOrderRequestImportedPayment(BaseModel):
     """
     ImportOrderRequestImportedPayment
     """ # noqa: E501
-    code: Optional[StrictStr] = None
+    code: StrictStr
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
-    amounts: Optional[List[OrderPaymentAmount]] = None
+    amounts: List[OrderPaymentAmount]
     cc_info: Optional[PaymentCcInfo] = Field(default=None, alias="ccInfo")
-    __properties: ClassVar[List[str]] = ["code", "additionalInfo", "amounts", "ccInfo"]
+    is_upfront: Optional[StrictBool] = Field(default=None, alias="isUpfront")
+    __properties: ClassVar[List[str]] = ["code", "additionalInfo", "amounts", "ccInfo", "isUpfront"]
 
     model_config = {
         "populate_by_name": True,
@@ -101,7 +102,8 @@ class ImportOrderRequestImportedPayment(BaseModel):
             "code": obj.get("code"),
             "additionalInfo": obj.get("additionalInfo"),
             "amounts": [OrderPaymentAmount.from_dict(_item) for _item in obj.get("amounts")] if obj.get("amounts") is not None else None,
-            "ccInfo": PaymentCcInfo.from_dict(obj.get("ccInfo")) if obj.get("ccInfo") is not None else None
+            "ccInfo": PaymentCcInfo.from_dict(obj.get("ccInfo")) if obj.get("ccInfo") is not None else None,
+            "isUpfront": obj.get("isUpfront")
         })
         return _obj
 

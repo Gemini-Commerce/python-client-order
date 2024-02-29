@@ -61,6 +61,8 @@ class TestOrderCreateOrderRequest(unittest.TestCase):
                         row_vat_amount = , 
                         discount_amount = , 
                         row_base_price = , 
+                        unit_custom_price = , 
+                        row_custom_price = , 
                         vat_percentage = 1.337, 
                         vat_inaccurate = True, 
                         vat_calculated = True, 
@@ -74,7 +76,26 @@ class TestOrderCreateOrderRequest(unittest.TestCase):
                         promotion_grn = [
                             ''
                             ], 
-                        product_is_virtual = True, )
+                        product_is_virtual = True, 
+                        product_configuration = [
+                            order.models.item_product_configuration_step.ItemProductConfigurationStep(
+                                id = '', 
+                                grn = '', 
+                                label = '', 
+                                description = '', 
+                                options = [
+                                    order.models.product_configuration_step_option.ProductConfigurationStepOption(
+                                        id = '', 
+                                        grn = '', 
+                                        label = '', 
+                                        price_variation = , 
+                                        image = order.models.option_image.OptionImage(
+                                            grn = '', 
+                                            url = '', ), 
+                                        has_quantity = True, 
+                                        quantity = 56, )
+                                    ], )
+                            ], )
                     ],
                 payments_info = [
                     order.models.order_data_payment_info.OrderDataPaymentInfo(
@@ -244,13 +265,142 @@ class TestOrderCreateOrderRequest(unittest.TestCase):
                     segment = '', 
                     data = '', 
                     certified_email = '', 
-                    tax_code = '', ),
+                    tax_code = '', 
+                    sdi_code = '', 
+                    fiscal_code = '', 
+                    company_name = '', 
+                    agent_grn = '', ),
                 cart_grn = '',
                 on_hold = True,
                 notes = ''
             )
         else:
             return OrderCreateOrderRequest(
+                tenant_id = '',
+                number = '',
+                market = '',
+                locale = '',
+                items = [
+                    order.models.order_order_data_item.orderOrderDataItem(
+                        id = '', 
+                        product_grn = '', 
+                        qty_ordered = 56, 
+                        qty_committed = 56, 
+                        unit_sale_price = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), 
+                        unit_list_price = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), 
+                        unit_base_price = , 
+                        unit_vat_amount = , 
+                        row_sale_price = , 
+                        row_list_price = , 
+                        row_vat_amount = , 
+                        discount_amount = , 
+                        row_base_price = , 
+                        unit_custom_price = , 
+                        row_custom_price = , 
+                        vat_percentage = 1.337, 
+                        vat_inaccurate = True, 
+                        vat_calculated = True, 
+                        product_name = '', 
+                        product_code = '', 
+                        product_sku = '', 
+                        product_options = '', 
+                        product_img = '', 
+                        product_data = '', 
+                        shipment_info_reference = '', 
+                        promotion_grn = [
+                            ''
+                            ], 
+                        product_is_virtual = True, 
+                        product_configuration = [
+                            order.models.item_product_configuration_step.ItemProductConfigurationStep(
+                                id = '', 
+                                grn = '', 
+                                label = '', 
+                                description = '', 
+                                options = [
+                                    order.models.product_configuration_step_option.ProductConfigurationStepOption(
+                                        id = '', 
+                                        grn = '', 
+                                        label = '', 
+                                        price_variation = , 
+                                        image = order.models.option_image.OptionImage(
+                                            grn = '', 
+                                            url = '', ), 
+                                        has_quantity = True, 
+                                        quantity = 56, )
+                                    ], )
+                            ], )
+                    ],
+                currency = 'XXX',
+                subtotals = {
+                    'key' : order.models.order_data_subtotal.OrderDataSubtotal(
+                        code = 'UNKNOWN', 
+                        value = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), )
+                    },
+                totals = {
+                    'key' : order.models.order_data_total.OrderDataTotal(
+                        code = 'UNKNOWN', 
+                        value = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), )
+                    },
+                vat_included = True,
+                billing_address = order.models.order_postal_address.orderPostalAddress(
+                    revision = 56, 
+                    region_code = '', 
+                    language_code = '', 
+                    postal_code = '', 
+                    sorting_code = '', 
+                    administrative_area = '', 
+                    locality = '', 
+                    sublocality = '', 
+                    address_lines = [
+                        ''
+                        ], 
+                    recipients = [
+                        ''
+                        ], 
+                    organization = '', 
+                    phone_number = '', 
+                    additional_info = order.models.additional_info.additionalInfo(), ),
+                shipping_address = order.models.order_postal_address.orderPostalAddress(
+                    revision = 56, 
+                    region_code = '', 
+                    language_code = '', 
+                    postal_code = '', 
+                    sorting_code = '', 
+                    administrative_area = '', 
+                    locality = '', 
+                    sublocality = '', 
+                    address_lines = [
+                        ''
+                        ], 
+                    recipients = [
+                        ''
+                        ], 
+                    organization = '', 
+                    phone_number = '', 
+                    additional_info = order.models.additional_info.additionalInfo(), ),
+                customer_info = order.models.order_data_customer_info.OrderDataCustomerInfo(
+                    grn = '', 
+                    firstname = '', 
+                    lastname = '', 
+                    email = '', 
+                    phone = '', 
+                    segment = '', 
+                    data = '', 
+                    certified_email = '', 
+                    tax_code = '', 
+                    sdi_code = '', 
+                    fiscal_code = '', 
+                    company_name = '', 
+                    agent_grn = '', ),
         )
         """
 

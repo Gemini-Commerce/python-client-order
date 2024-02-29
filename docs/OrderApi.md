@@ -34,6 +34,8 @@ Method | HTTP request | Description
 [**list_orders_by_customer**](OrderApi.md#list_orders_by_customer) | **POST** /order.Order/ListOrdersByCustomer | List Orders by Customer
 [**list_orders_by_numbers**](OrderApi.md#list_orders_by_numbers) | **POST** /order.Order/ListOrdersByNumbers | List Orders by Numbers
 [**list_shipments**](OrderApi.md#list_shipments) | **POST** /order.Order/ListShipments | List Shipments
+[**order_add_document**](OrderApi.md#order_add_document) | **POST** /order.Order/AddDocument | Documents
+[**order_remove_document_by_code**](OrderApi.md#order_remove_document_by_code) | **POST** /order.Order/RemoveDocumentByCode | 
 [**print_orders_labels**](OrderApi.md#print_orders_labels) | **POST** /order.Order/PrintOrdersLabels | Print Orders Labels
 [**quash_fulfillment**](OrderApi.md#quash_fulfillment) | **POST** /order.Order/QuashFulfillment | Quash Fulfillment
 [**quash_shipment**](OrderApi.md#quash_shipment) | **POST** /order.Order/QuashShipment | Quash Shipment
@@ -62,6 +64,7 @@ Approve Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -81,6 +84,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -112,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -137,6 +146,7 @@ Assign Shipment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -156,6 +166,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -187,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -212,6 +228,7 @@ Calculate Refund
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -232,6 +249,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -263,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -288,6 +311,7 @@ Cancel Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -307,6 +331,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -338,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -363,6 +393,7 @@ Cancel Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -382,6 +413,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -413,7 +450,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -438,6 +475,7 @@ Cancel Shipment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -457,6 +495,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -488,7 +532,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -513,6 +557,7 @@ Complete Shipment Packing
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -532,6 +577,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -563,7 +614,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -588,6 +639,7 @@ Create Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -608,6 +660,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -639,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -664,6 +722,7 @@ Create Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -684,6 +743,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -715,7 +780,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -740,6 +805,7 @@ Create Order History
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -760,6 +826,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -791,7 +863,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -816,6 +888,7 @@ Create Payment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -836,6 +909,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -867,7 +946,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -892,6 +971,7 @@ Create Payment Transaction
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -912,6 +992,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -943,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -968,6 +1054,7 @@ Create Refund
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -988,6 +1075,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1019,7 +1112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1044,6 +1137,7 @@ Create Refund Transaction
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1064,6 +1158,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1095,7 +1195,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1120,6 +1220,7 @@ Create Shipment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1140,6 +1241,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1171,7 +1278,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1196,6 +1303,7 @@ Delete Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1215,6 +1323,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1246,7 +1360,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1271,6 +1385,7 @@ Get Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1291,6 +1406,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1322,7 +1443,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1347,6 +1468,7 @@ Get Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1367,6 +1489,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1398,7 +1526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1423,6 +1551,7 @@ Get Order by Cart ID
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1443,6 +1572,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1474,7 +1609,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1499,6 +1634,7 @@ Get Order by Order Number
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1519,6 +1655,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1550,7 +1692,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1575,6 +1717,7 @@ Get Payment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1595,6 +1738,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1626,7 +1775,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1651,6 +1800,7 @@ Get Shipment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1671,6 +1821,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1702,7 +1858,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1727,6 +1883,7 @@ Get Transaction
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1747,6 +1904,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1778,7 +1941,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1803,6 +1966,7 @@ Hold Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1822,6 +1986,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1853,7 +2023,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1878,6 +2048,7 @@ Import Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1898,6 +2069,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -1929,7 +2106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -1954,6 +2131,7 @@ List Fulfillments
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -1974,6 +2152,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2005,7 +2189,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2030,6 +2214,7 @@ List Orders
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2050,6 +2235,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2081,7 +2272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2106,6 +2297,7 @@ List Orders by Customer
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2126,6 +2318,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2157,7 +2355,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2182,6 +2380,7 @@ List Orders by Numbers
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2202,6 +2401,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2233,7 +2438,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2258,6 +2463,7 @@ List Shipments
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2278,6 +2484,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2309,7 +2521,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2327,6 +2539,165 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **order_add_document**
+> object order_add_document(body)
+
+Documents
+
+### Example
+
+* Api Key Authentication (Authorization):
+
+```python
+import time
+import os
+import order
+from order.models.order_add_document_request import OrderAddDocumentRequest
+from order.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dom.api.gogemini.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = order.Configuration(
+    host = "https://dom.api.gogemini.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with order.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = order.OrderApi(api_client)
+    body = order.OrderAddDocumentRequest() # OrderAddDocumentRequest | 
+
+    try:
+        # Documents
+        api_response = api_instance.order_add_document(body)
+        print("The response of OrderApi->order_add_document:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrderApi->order_add_document: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**OrderAddDocumentRequest**](OrderAddDocumentRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **order_remove_document_by_code**
+> object order_remove_document_by_code(body)
+
+
+
+### Example
+
+* Api Key Authentication (Authorization):
+
+```python
+import time
+import os
+import order
+from order.models.order_remove_document_by_code_request import OrderRemoveDocumentByCodeRequest
+from order.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dom.api.gogemini.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = order.Configuration(
+    host = "https://dom.api.gogemini.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with order.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = order.OrderApi(api_client)
+    body = order.OrderRemoveDocumentByCodeRequest() # OrderRemoveDocumentByCodeRequest | 
+
+    try:
+        api_response = api_instance.order_remove_document_by_code(body)
+        print("The response of OrderApi->order_remove_document_by_code:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrderApi->order_remove_document_by_code: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**OrderRemoveDocumentByCodeRequest**](OrderRemoveDocumentByCodeRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **print_orders_labels**
 > OrderPrintOrdersLabelsResponse print_orders_labels(body)
 
@@ -2334,6 +2705,7 @@ Print Orders Labels
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2354,6 +2726,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2385,7 +2763,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2410,6 +2788,7 @@ Quash Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2429,6 +2808,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2460,7 +2845,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2485,6 +2870,7 @@ Quash Shipment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2504,6 +2890,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2535,7 +2927,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2560,6 +2952,7 @@ Receive Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2579,6 +2972,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2610,7 +3009,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2635,6 +3034,7 @@ Report Fulfillment Error
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2654,6 +3054,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2685,7 +3091,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2710,6 +3116,7 @@ Report Fulfillment Not Resolvable
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2729,6 +3136,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2760,7 +3173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2785,6 +3198,7 @@ Report Fulfillment Ready
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2804,6 +3218,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2835,7 +3255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2860,6 +3280,7 @@ Report Shipment Delivery
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2879,6 +3300,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2910,7 +3337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -2935,6 +3362,7 @@ Report Shipment Missing Stock
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -2954,6 +3382,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -2985,7 +3419,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3010,6 +3444,7 @@ Resolve Shipment Missing Stock
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3029,6 +3464,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3060,7 +3501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3085,6 +3526,7 @@ Retry Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3104,6 +3546,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3135,7 +3583,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3160,6 +3608,7 @@ Search Orders
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3180,6 +3629,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3211,7 +3666,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3236,6 +3691,7 @@ Send Fulfillment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3255,6 +3711,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3286,7 +3748,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3311,6 +3773,7 @@ Send Order Notification
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3330,6 +3793,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3361,7 +3830,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3386,6 +3855,7 @@ Start Fulfillment Processing
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3405,6 +3875,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3436,7 +3912,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3461,6 +3937,7 @@ Start Shipment Processing
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3480,6 +3957,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3511,7 +3994,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3536,6 +4019,7 @@ Unhold Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3555,6 +4039,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3586,7 +4076,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3611,6 +4101,7 @@ Update Order
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3631,6 +4122,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3662,7 +4159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -3687,6 +4184,7 @@ Update Payment
 
 ### Example
 
+* Api Key Authentication (Authorization):
 
 ```python
 import time
@@ -3707,6 +4205,12 @@ configuration = order.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -3738,7 +4242,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

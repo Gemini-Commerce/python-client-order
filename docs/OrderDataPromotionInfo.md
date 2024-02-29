@@ -7,11 +7,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **promotion_grn**| **str** |   | [optional]
-**type**| **str** |   | [optional]
+**type**| **str** |   |
 **additional_info**| **str** |   | [optional]
-**name**| **str** |   | [optional]
+**name**| **str** |   |
 **description**| **str** |   | [optional]
-**amount**| [**OrderMoney**](OrderMoney.md) |   | [optional]
+**amount**| [**OrderMoney**](OrderMoney.md) |   |
 **coupon_code**| **str** |   | [optional]
 **vat_amount**| [**OrderMoney**](OrderMoney.md) |   | [optional]
 **vat_percentage**| **float** |   | [optional]

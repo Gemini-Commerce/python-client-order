@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -31,8 +31,8 @@ class OrderGetOrderByOrderNumberRequest(BaseModel):
     """
     OrderGetOrderByOrderNumberRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_number: Optional[StrictStr] = Field(default=None, alias="orderNumber")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    order_number: StrictStr = Field(alias="orderNumber")
     __properties: ClassVar[List[str]] = ["tenantId", "orderNumber"]
 
     model_config = {

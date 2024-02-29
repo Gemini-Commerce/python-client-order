@@ -31,8 +31,8 @@ class OrderQuashFulfillmentRequest(BaseModel):
     """
     OrderQuashFulfillmentRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    fulfillment_id: Optional[StrictStr] = Field(default=None, alias="fulfillmentId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    fulfillment_id: StrictStr = Field(alias="fulfillmentId")
     reason: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["tenantId", "fulfillmentId", "reason"]
 

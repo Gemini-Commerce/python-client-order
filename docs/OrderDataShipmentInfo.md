@@ -6,12 +6,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reference**| **str** |   | [optional]
-**code**| **str** |   | [optional]
+**reference**| **str** |   |
+**code**| **str** |   |
 **method**| **str** |   | [optional]
 **title**| **str** |   | [optional]
 **additional_info**| **str** |   | [optional]
-**amount**| [**OrderMoney**](OrderMoney.md) |   | [optional]
+**amount**| [**OrderMoney**](OrderMoney.md) |   |
 **fee**| [**OrderMoney**](OrderMoney.md) |   | [optional]
 **vat_amount**| [**OrderMoney**](OrderMoney.md) |   | [optional]
 **vat_percentage**| **float** |   | [optional]

@@ -57,10 +57,12 @@ class TestOrderSearchOrdersRequest(unittest.TestCase):
                     codes = [
                         ''
                         ], 
-                    condition = 'IN', )
+                    condition = 'IN', ),
+                agent_grn = ''
             )
         else:
             return OrderSearchOrdersRequest(
+                tenant_id = '',
         )
         """
 

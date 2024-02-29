@@ -42,6 +42,8 @@ class TestOrderStartShipmentProcessingRequest(unittest.TestCase):
             )
         else:
             return OrderStartShipmentProcessingRequest(
+                tenant_id = '',
+                shipment_id = '',
         )
         """
 

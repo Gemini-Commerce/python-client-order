@@ -56,6 +56,15 @@ class TestOrderCreateRefundRequest(unittest.TestCase):
             )
         else:
             return OrderCreateRefundRequest(
+                tenant_id = '',
+                payment_id = '',
+                amounts = [
+                    order.models.order_refund_amount.orderRefundAmount(
+                        code = 'UNKNOWN', 
+                        value = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), )
+                    ],
         )
         """
 

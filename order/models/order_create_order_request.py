@@ -41,23 +41,23 @@ class OrderCreateOrderRequest(BaseModel):
     """
     OrderCreateOrderRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    number: Optional[StrictStr] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    number: StrictStr
     channel: Optional[StrictStr] = None
-    market: Optional[StrictStr] = None
-    locale: Optional[StrictStr] = None
-    items: Optional[List[OrderOrderDataItem]] = None
+    market: StrictStr
+    locale: StrictStr
+    items: List[OrderOrderDataItem]
     payments_info: Optional[List[OrderDataPaymentInfo]] = Field(default=None, alias="paymentsInfo")
     shipments_info: Optional[List[OrderDataShipmentInfo]] = Field(default=None, alias="shipmentsInfo")
     promotions: Optional[List[OrderDataPromotionInfo]] = None
     payments: Optional[List[CreateOrderRequestInitialPayment]] = None
-    currency: Optional[OrderCurrency] = None
-    subtotals: Optional[Dict[str, OrderDataSubtotal]] = None
-    totals: Optional[Dict[str, OrderDataTotal]] = None
-    vat_included: Optional[StrictBool] = Field(default=None, alias="vatIncluded")
-    billing_address: Optional[OrderPostalAddress] = Field(default=None, alias="billingAddress")
-    shipping_address: Optional[OrderPostalAddress] = Field(default=None, alias="shippingAddress")
-    customer_info: Optional[OrderDataCustomerInfo] = Field(default=None, alias="customerInfo")
+    currency: OrderCurrency
+    subtotals: Dict[str, OrderDataSubtotal]
+    totals: Dict[str, OrderDataTotal]
+    vat_included: StrictBool = Field(alias="vatIncluded")
+    billing_address: OrderPostalAddress = Field(alias="billingAddress")
+    shipping_address: OrderPostalAddress = Field(alias="shippingAddress")
+    customer_info: OrderDataCustomerInfo = Field(alias="customerInfo")
     cart_grn: Optional[StrictStr] = Field(default=None, alias="cartGrn")
     on_hold: Optional[StrictBool] = Field(default=None, alias="onHold")
     notes: Optional[StrictStr] = None

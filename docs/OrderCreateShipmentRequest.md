@@ -6,12 +6,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**order_id**| **str** |   | [optional]
-**items**| [**List[OrderShipmentItem]**](OrderShipmentItem.md) |   | [optional]
-**address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   | [optional]
+**tenant_id**| **str** |   |
+**order_id**| **str** |   |
+**items**| [**List[OrderShipmentItem]**](OrderShipmentItem.md) |   |
+**address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   |
 **from_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   | [optional]
 **return_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   | [optional]
+**tracking**| [**List[ShipmentTracking]**](ShipmentTracking.md) |   | [optional]
+**return_tracking**| [**List[ShipmentTracking]**](ShipmentTracking.md) |   | [optional]
 **code**| **str** |   | [optional]
 **method**| **str** |   | [optional]
 

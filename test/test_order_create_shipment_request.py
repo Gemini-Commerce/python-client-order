@@ -99,11 +99,53 @@ class TestOrderCreateShipmentRequest(unittest.TestCase):
                     organization = '', 
                     phone_number = '', 
                     additional_info = order.models.additional_info.additionalInfo(), ),
+                tracking = [
+                    order.models.shipment_tracking.ShipmentTracking(
+                        carrier_code = '', 
+                        carrier_title = '', 
+                        url = '', 
+                        number = '', 
+                        label_url = '', )
+                    ],
+                return_tracking = [
+                    order.models.shipment_tracking.ShipmentTracking(
+                        carrier_code = '', 
+                        carrier_title = '', 
+                        url = '', 
+                        number = '', 
+                        label_url = '', )
+                    ],
                 code = '',
                 method = ''
             )
         else:
             return OrderCreateShipmentRequest(
+                tenant_id = '',
+                order_id = '',
+                items = [
+                    order.models.order_shipment_item.orderShipmentItem(
+                        order_item_id = '', 
+                        qty = 56, 
+                        row_weight = '', )
+                    ],
+                address = order.models.order_postal_address.orderPostalAddress(
+                    revision = 56, 
+                    region_code = '', 
+                    language_code = '', 
+                    postal_code = '', 
+                    sorting_code = '', 
+                    administrative_area = '', 
+                    locality = '', 
+                    sublocality = '', 
+                    address_lines = [
+                        ''
+                        ], 
+                    recipients = [
+                        ''
+                        ], 
+                    organization = '', 
+                    phone_number = '', 
+                    additional_info = order.models.additional_info.additionalInfo(), ),
         )
         """
 

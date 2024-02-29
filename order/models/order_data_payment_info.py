@@ -33,9 +33,9 @@ class OrderDataPaymentInfo(BaseModel):
     """
     OrderDataPaymentInfo
     """ # noqa: E501
-    code: Optional[StrictStr] = None
+    code: StrictStr
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
-    amount: Optional[OrderMoney] = None
+    amount: OrderMoney
     fee: Optional[OrderMoney] = None
     vat_amount: Optional[OrderMoney] = Field(default=None, alias="vatAmount")
     vat_percentage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="vatPercentage")

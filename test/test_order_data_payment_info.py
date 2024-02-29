@@ -62,6 +62,10 @@ class TestOrderDataPaymentInfo(unittest.TestCase):
             )
         else:
             return OrderDataPaymentInfo(
+                code = '',
+                amount = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

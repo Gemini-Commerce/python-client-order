@@ -31,8 +31,8 @@ class OrderListOrdersByNumbersRequest(BaseModel):
     """
     OrderListOrdersByNumbersRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    numbers: Optional[List[StrictStr]] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    numbers: List[StrictStr]
     page_size: Optional[StrictInt] = Field(default=None, description="The maximum number of orders to return. The service may return fewer than this value. If unspecified, at most 10 orders will be returned. The maximum value is 100; values above 100 will be coerced to 100.", alias="pageSize")
     page_token: Optional[StrictStr] = Field(default=None, description="A page token, received from a previous `ListOrders` call. Provide this to retrieve the subsequent page.   When paginating, all other parameters provided to `ListOrders` must match the call that provided the page token.", alias="pageToken")
     __properties: ClassVar[List[str]] = ["tenantId", "numbers", "pageSize", "pageToken"]

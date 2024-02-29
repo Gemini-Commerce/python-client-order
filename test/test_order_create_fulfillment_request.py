@@ -47,6 +47,13 @@ class TestOrderCreateFulfillmentRequest(unittest.TestCase):
             )
         else:
             return OrderCreateFulfillmentRequest(
+                tenant_id = '',
+                order_id = '',
+                items = [
+                    order.models.order_fulfillment_item.orderFulfillmentItem(
+                        order_item_id = '', 
+                        qty = 56, )
+                    ],
         )
         """
 

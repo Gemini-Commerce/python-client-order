@@ -56,6 +56,12 @@ class TestOrderCreatePaymentRequest(unittest.TestCase):
             )
         else:
             return OrderCreatePaymentRequest(
+                tenant_id = '',
+                order_id = '',
+                code = '',
+                amount = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

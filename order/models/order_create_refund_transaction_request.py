@@ -32,8 +32,8 @@ class OrderCreateRefundTransactionRequest(BaseModel):
     """
     OrderCreateRefundTransactionRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    refund_id: Optional[StrictStr] = Field(default=None, alias="refundId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    refund_id: StrictStr = Field(alias="refundId")
     parent_transaction_id: Optional[StrictStr] = Field(default=None, alias="parentTransactionId")
     type: Optional[OrderTransactionType] = None
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")

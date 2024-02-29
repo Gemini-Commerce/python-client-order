@@ -31,7 +31,7 @@ class OrderListFulfillmentsRequest(BaseModel):
     """
     OrderListFulfillmentsRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    tenant_id: StrictStr = Field(alias="tenantId")
     order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
     __properties: ClassVar[List[str]] = ["tenantId", "orderId"]
 

@@ -42,6 +42,8 @@ class TestOrderUnholdOrderRequest(unittest.TestCase):
             )
         else:
             return OrderUnholdOrderRequest(
+                tenant_id = '',
+                order_id = '',
         )
         """
 

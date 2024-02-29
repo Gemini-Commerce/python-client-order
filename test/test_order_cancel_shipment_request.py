@@ -43,6 +43,8 @@ class TestOrderCancelShipmentRequest(unittest.TestCase):
             )
         else:
             return OrderCancelShipmentRequest(
+                tenant_id = '',
+                shipment_id = '',
         )
         """
 

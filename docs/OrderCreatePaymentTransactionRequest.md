@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**payment_id**| **str** |   | [optional]
-**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  | [optional]
+**tenant_id**| **str** |   |
+**payment_id**| **str** |   |
+**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  |
 **additional_info**| **str** |   | [optional]
 
 

@@ -34,7 +34,7 @@ class OrderSearchOrdersRequest(BaseModel):
     """
     OrderSearchOrdersRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    tenant_id: StrictStr = Field(alias="tenantId")
     search_query: Optional[StrictStr] = Field(default=None, alias="searchQuery")
     page_size: Optional[StrictInt] = Field(default=None, description="The maximum number of orders to return. The service may return fewer than this value. If unspecified, at most 10 orders will be returned. The maximum value is 100; values above 100 will be coerced to 100.", alias="pageSize")
     page_token: Optional[StrictStr] = Field(default=None, description="A page token, received from a previous `ListOrders` call. Provide this to retrieve the subsequent page.   When paginating, all other parameters provided to `ListOrders` must match the call that provided the page token.", alias="pageToken")
@@ -43,7 +43,8 @@ class OrderSearchOrdersRequest(BaseModel):
     from_date: Optional[datetime] = Field(default=None, alias="fromDate")
     to_date: Optional[datetime] = Field(default=None, alias="toDate")
     payment_filter: Optional[OrderPaymentFilter] = Field(default=None, alias="paymentFilter")
-    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter"]
+    agent_grn: Optional[StrictStr] = Field(default=None, alias="agentGrn")
+    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn"]
 
     model_config = {
         "populate_by_name": True,
@@ -115,7 +116,8 @@ class OrderSearchOrdersRequest(BaseModel):
             "statusFilter": OrderStatusFilter.from_dict(obj.get("statusFilter")) if obj.get("statusFilter") is not None else None,
             "fromDate": obj.get("fromDate"),
             "toDate": obj.get("toDate"),
-            "paymentFilter": OrderPaymentFilter.from_dict(obj.get("paymentFilter")) if obj.get("paymentFilter") is not None else None
+            "paymentFilter": OrderPaymentFilter.from_dict(obj.get("paymentFilter")) if obj.get("paymentFilter") is not None else None,
+            "agentGrn": obj.get("agentGrn")
         })
         return _obj
 

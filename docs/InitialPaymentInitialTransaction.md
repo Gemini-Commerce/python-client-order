@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  | [optional]
+**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  |
 **additional_info**| **str** |   | [optional]
 
 

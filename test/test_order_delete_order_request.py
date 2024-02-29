@@ -42,6 +42,8 @@ class TestOrderDeleteOrderRequest(unittest.TestCase):
             )
         else:
             return OrderDeleteOrderRequest(
+                tenant_id = '',
+                order_id = '',
         )
         """
 

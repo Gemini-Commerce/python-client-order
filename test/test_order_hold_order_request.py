@@ -43,6 +43,7 @@ class TestOrderHoldOrderRequest(unittest.TestCase):
             )
         else:
             return OrderHoldOrderRequest(
+                order_id = '',
         )
         """
 

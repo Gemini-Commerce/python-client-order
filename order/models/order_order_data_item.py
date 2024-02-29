@@ -22,6 +22,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
 from pydantic import Field
+from order.models.item_product_configuration_step import ItemProductConfigurationStep
 from order.models.order_money import OrderMoney
 try:
     from typing import Self
@@ -45,6 +46,8 @@ class OrderOrderDataItem(BaseModel):
     row_vat_amount: Optional[OrderMoney] = Field(default=None, alias="rowVatAmount")
     discount_amount: Optional[OrderMoney] = Field(default=None, alias="discountAmount")
     row_base_price: Optional[OrderMoney] = Field(default=None, alias="rowBasePrice")
+    unit_custom_price: Optional[OrderMoney] = Field(default=None, alias="unitCustomPrice")
+    row_custom_price: Optional[OrderMoney] = Field(default=None, alias="rowCustomPrice")
     vat_percentage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="vatPercentage")
     vat_inaccurate: Optional[StrictBool] = Field(default=None, alias="vatInaccurate")
     vat_calculated: Optional[StrictBool] = Field(default=None, alias="vatCalculated")
@@ -57,7 +60,8 @@ class OrderOrderDataItem(BaseModel):
     shipment_info_reference: Optional[StrictStr] = Field(default=None, alias="shipmentInfoReference")
     promotion_grn: Optional[List[StrictStr]] = Field(default=None, alias="promotionGrn")
     product_is_virtual: Optional[StrictBool] = Field(default=None, alias="productIsVirtual")
-    __properties: ClassVar[List[str]] = ["id", "productGrn", "qtyOrdered", "qtyCommitted", "unitSalePrice", "unitListPrice", "unitBasePrice", "unitVatAmount", "rowSalePrice", "rowListPrice", "rowVatAmount", "discountAmount", "rowBasePrice", "vatPercentage", "vatInaccurate", "vatCalculated", "productName", "productCode", "productSku", "productOptions", "productImg", "productData", "shipmentInfoReference", "promotionGrn", "productIsVirtual"]
+    product_configuration: Optional[List[ItemProductConfigurationStep]] = Field(default=None, alias="productConfiguration")
+    __properties: ClassVar[List[str]] = ["id", "productGrn", "qtyOrdered", "qtyCommitted", "unitSalePrice", "unitListPrice", "unitBasePrice", "unitVatAmount", "rowSalePrice", "rowListPrice", "rowVatAmount", "discountAmount", "rowBasePrice", "unitCustomPrice", "rowCustomPrice", "vatPercentage", "vatInaccurate", "vatCalculated", "productName", "productCode", "productSku", "productOptions", "productImg", "productData", "shipmentInfoReference", "promotionGrn", "productIsVirtual", "productConfiguration"]
 
     model_config = {
         "populate_by_name": True,
@@ -123,6 +127,19 @@ class OrderOrderDataItem(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of row_base_price
         if self.row_base_price:
             _dict['rowBasePrice'] = self.row_base_price.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of unit_custom_price
+        if self.unit_custom_price:
+            _dict['unitCustomPrice'] = self.unit_custom_price.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of row_custom_price
+        if self.row_custom_price:
+            _dict['rowCustomPrice'] = self.row_custom_price.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in product_configuration (list)
+        _items = []
+        if self.product_configuration:
+            for _item in self.product_configuration:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['productConfiguration'] = _items
         return _dict
 
     @classmethod
@@ -148,6 +165,8 @@ class OrderOrderDataItem(BaseModel):
             "rowVatAmount": OrderMoney.from_dict(obj.get("rowVatAmount")) if obj.get("rowVatAmount") is not None else None,
             "discountAmount": OrderMoney.from_dict(obj.get("discountAmount")) if obj.get("discountAmount") is not None else None,
             "rowBasePrice": OrderMoney.from_dict(obj.get("rowBasePrice")) if obj.get("rowBasePrice") is not None else None,
+            "unitCustomPrice": OrderMoney.from_dict(obj.get("unitCustomPrice")) if obj.get("unitCustomPrice") is not None else None,
+            "rowCustomPrice": OrderMoney.from_dict(obj.get("rowCustomPrice")) if obj.get("rowCustomPrice") is not None else None,
             "vatPercentage": obj.get("vatPercentage"),
             "vatInaccurate": obj.get("vatInaccurate"),
             "vatCalculated": obj.get("vatCalculated"),
@@ -159,7 +178,8 @@ class OrderOrderDataItem(BaseModel):
             "productData": obj.get("productData"),
             "shipmentInfoReference": obj.get("shipmentInfoReference"),
             "promotionGrn": obj.get("promotionGrn"),
-            "productIsVirtual": obj.get("productIsVirtual")
+            "productIsVirtual": obj.get("productIsVirtual"),
+            "productConfiguration": [ItemProductConfigurationStep.from_dict(_item) for _item in obj.get("productConfiguration")] if obj.get("productConfiguration") is not None else None
         })
         return _obj
 

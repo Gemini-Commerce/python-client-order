@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
 from order.models.order_data_subtotal_code import OrderDataSubtotalCode
 from order.models.order_money import OrderMoney
@@ -32,8 +32,8 @@ class OrderDataSubtotal(BaseModel):
     """
     OrderDataSubtotal
     """ # noqa: E501
-    code: Optional[OrderDataSubtotalCode] = None
-    value: Optional[OrderMoney] = None
+    code: OrderDataSubtotalCode
+    value: OrderMoney
     __properties: ClassVar[List[str]] = ["code", "value"]
 
     model_config = {

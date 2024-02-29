@@ -32,7 +32,7 @@ class InitialPaymentInitialTransaction(BaseModel):
     """
     InitialPaymentInitialTransaction
     """ # noqa: E501
-    type: Optional[OrderTransactionType] = None
+    type: OrderTransactionType
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     __properties: ClassVar[List[str]] = ["type", "additionalInfo"]
 

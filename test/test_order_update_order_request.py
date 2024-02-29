@@ -71,12 +71,12 @@ class TestOrderUpdateOrderRequest(unittest.TestCase):
                         phone_number = '', 
                         additional_info = order.models.additional_info.additionalInfo(), ), 
                     additional_info = order.models.additional_info.additionalInfo(), ),
-                field_mask = [
-                    ''
-                    ]
+                field_mask = ''
             )
         else:
             return OrderUpdateOrderRequest(
+                tenant_id = '',
+                id = '',
         )
         """
 

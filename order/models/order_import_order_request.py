@@ -40,23 +40,23 @@ class OrderImportOrderRequest(BaseModel):
     """
     OrderImportOrderRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    tenant_id: StrictStr = Field(alias="tenantId")
     created_at: Optional[datetime] = Field(default=None, alias="createdAt")
-    number: Optional[StrictStr] = None
+    number: StrictStr
     channel: Optional[StrictStr] = None
-    market: Optional[StrictStr] = None
-    locale: Optional[StrictStr] = None
-    customer_info: Optional[OrderDataCustomerInfo] = Field(default=None, alias="customerInfo")
-    shipping_address: Optional[OrderPostalAddress] = Field(default=None, alias="shippingAddress")
-    billing_address: Optional[OrderPostalAddress] = Field(default=None, alias="billingAddress")
-    payments: Optional[List[ImportOrderRequestImportedPayment]] = None
-    payments_info: Optional[List[OrderDataPaymentInfo]] = Field(default=None, alias="paymentsInfo")
-    shipments_info: Optional[List[OrderDataShipmentInfo]] = Field(default=None, alias="shipmentsInfo")
-    items: Optional[List[OrderOrderDataItem]] = None
-    subtotals: Optional[Dict[str, OrderDataSubtotal]] = None
-    totals: Optional[Dict[str, OrderDataTotal]] = None
-    status: Optional[StrictStr] = None
-    currency: Optional[OrderCurrency] = None
+    market: StrictStr
+    locale: StrictStr
+    customer_info: OrderDataCustomerInfo = Field(alias="customerInfo")
+    shipping_address: OrderPostalAddress = Field(alias="shippingAddress")
+    billing_address: OrderPostalAddress = Field(alias="billingAddress")
+    payments: List[ImportOrderRequestImportedPayment]
+    payments_info: List[OrderDataPaymentInfo] = Field(alias="paymentsInfo")
+    shipments_info: List[OrderDataShipmentInfo] = Field(alias="shipmentsInfo")
+    items: List[OrderOrderDataItem]
+    subtotals: Dict[str, OrderDataSubtotal]
+    totals: Dict[str, OrderDataTotal]
+    status: StrictStr
+    currency: OrderCurrency
     __properties: ClassVar[List[str]] = ["tenantId", "createdAt", "number", "channel", "market", "locale", "customerInfo", "shippingAddress", "billingAddress", "payments", "paymentsInfo", "shipmentsInfo", "items", "subtotals", "totals", "status", "currency"]
 
     model_config = {

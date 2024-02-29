@@ -42,6 +42,8 @@ class TestOrderGetTransactionRequest(unittest.TestCase):
             )
         else:
             return OrderGetTransactionRequest(
+                tenant_id = '',
+                id = '',
         )
         """
 

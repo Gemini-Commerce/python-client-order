@@ -34,9 +34,9 @@ class CreateOrderRequestInitialPayment(BaseModel):
     """
     CreateOrderRequestInitialPayment
     """ # noqa: E501
-    code: Optional[StrictStr] = None
+    code: StrictStr
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
-    amount: Optional[OrderMoney] = None
+    amount: OrderMoney
     cc_info: Optional[PaymentCcInfo] = Field(default=None, alias="ccInfo")
     transaction: Optional[InitialPaymentInitialTransaction] = None
     __properties: ClassVar[List[str]] = ["code", "additionalInfo", "amount", "ccInfo", "transaction"]

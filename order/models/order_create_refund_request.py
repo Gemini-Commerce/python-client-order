@@ -33,10 +33,10 @@ class OrderCreateRefundRequest(BaseModel):
     """
     OrderCreateRefundRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    payment_id: StrictStr = Field(alias="paymentId")
     items: Optional[List[OrderRefundItem]] = None
-    amounts: Optional[List[OrderRefundAmount]] = None
+    amounts: List[OrderRefundAmount]
     note: Optional[StrictStr] = None
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     __properties: ClassVar[List[str]] = ["tenantId", "paymentId", "items", "amounts", "note", "additionalInfo"]

@@ -22,6 +22,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
+from order.models.order_order_by import OrderOrderBy
 try:
     from typing import Self
 except ImportError:
@@ -31,11 +32,12 @@ class OrderListOrdersByCustomerRequest(BaseModel):
     """
     OrderListOrdersByCustomerRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    customer_grn: Optional[StrictStr] = Field(default=None, alias="customerGrn")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    customer_grn: StrictStr = Field(alias="customerGrn")
     page_size: Optional[StrictInt] = Field(default=None, description="The maximum number of orders to return. The service may return fewer than this value. If unspecified, at most 10 orders will be returned. The maximum value is 100; values above 100 will be coerced to 100.", alias="pageSize")
     page_token: Optional[StrictStr] = Field(default=None, description="A page token, received from a previous `ListOrders` call. Provide this to retrieve the subsequent page.   When paginating, all other parameters provided to `ListOrders` must match the call that provided the page token.", alias="pageToken")
-    __properties: ClassVar[List[str]] = ["tenantId", "customerGrn", "pageSize", "pageToken"]
+    order_by: Optional[List[OrderOrderBy]] = Field(default=None, alias="orderBy")
+    __properties: ClassVar[List[str]] = ["tenantId", "customerGrn", "pageSize", "pageToken", "orderBy"]
 
     model_config = {
         "populate_by_name": True,
@@ -74,6 +76,13 @@ class OrderListOrdersByCustomerRequest(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in order_by (list)
+        _items = []
+        if self.order_by:
+            for _item in self.order_by:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['orderBy'] = _items
         return _dict
 
     @classmethod
@@ -89,7 +98,8 @@ class OrderListOrdersByCustomerRequest(BaseModel):
             "tenantId": obj.get("tenantId"),
             "customerGrn": obj.get("customerGrn"),
             "pageSize": obj.get("pageSize"),
-            "pageToken": obj.get("pageToken")
+            "pageToken": obj.get("pageToken"),
+            "orderBy": [OrderOrderBy.from_dict(_item) for _item in obj.get("orderBy")] if obj.get("orderBy") is not None else None
         })
         return _obj
 

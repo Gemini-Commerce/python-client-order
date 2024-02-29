@@ -18,6 +18,9 @@
 from order.models.create_order_request_initial_payment import CreateOrderRequestInitialPayment
 from order.models.import_order_request_imported_payment import ImportOrderRequestImportedPayment
 from order.models.initial_payment_initial_transaction import InitialPaymentInitialTransaction
+from order.models.item_product_configuration_step import ItemProductConfigurationStep
+from order.models.option_image import OptionImage
+from order.models.order_add_document_request import OrderAddDocumentRequest
 from order.models.order_approve_order_request import OrderApproveOrderRequest
 from order.models.order_assign_shipment_request import OrderAssignShipmentRequest
 from order.models.order_by_direction import OrderByDirection
@@ -37,6 +40,7 @@ from order.models.order_create_refund_transaction_request import OrderCreateRefu
 from order.models.order_create_shipment_request import OrderCreateShipmentRequest
 from order.models.order_currency import OrderCurrency
 from order.models.order_data_customer_info import OrderDataCustomerInfo
+from order.models.order_data_document import OrderDataDocument
 from order.models.order_data_history import OrderDataHistory
 from order.models.order_data_payment_info import OrderDataPaymentInfo
 from order.models.order_data_promotion_info import OrderDataPromotionInfo
@@ -87,6 +91,7 @@ from order.models.order_refund import OrderRefund
 from order.models.order_refund_amount import OrderRefundAmount
 from order.models.order_refund_amount_code import OrderRefundAmountCode
 from order.models.order_refund_item import OrderRefundItem
+from order.models.order_remove_document_by_code_request import OrderRemoveDocumentByCodeRequest
 from order.models.order_report_fulfillment_error_request import OrderReportFulfillmentErrorRequest
 from order.models.order_report_fulfillment_not_resolvable_request import OrderReportFulfillmentNotResolvableRequest
 from order.models.order_report_fulfillment_ready_request import OrderReportFulfillmentReadyRequest
@@ -111,6 +116,7 @@ from order.models.order_update_order_request import OrderUpdateOrderRequest
 from order.models.order_update_payment_request import OrderUpdatePaymentRequest
 from order.models.payment_cc_info import PaymentCcInfo
 from order.models.print_orders_labels_response_failed_order import PrintOrdersLabelsResponseFailedOrder
+from order.models.product_configuration_step_option import ProductConfigurationStepOption
 from order.models.protobuf_any import ProtobufAny
 from order.models.protobuf_null_value import ProtobufNullValue
 from order.models.rpc_status import RpcStatus

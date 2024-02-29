@@ -237,6 +237,19 @@ class TestOrderApi(unittest.TestCase):
         """
         pass
 
+    def test_order_add_document(self) -> None:
+        """Test case for order_add_document
+
+        Documents
+        """
+        pass
+
+    def test_order_remove_document_by_code(self) -> None:
+        """Test case for order_remove_document_by_code
+
+        """
+        pass
+
     def test_print_orders_labels(self) -> None:
         """Test case for print_orders_labels
 

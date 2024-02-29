@@ -46,6 +46,10 @@ class TestOrderListOrdersByNumbersRequest(unittest.TestCase):
             )
         else:
             return OrderListOrdersByNumbersRequest(
+                tenant_id = '',
+                numbers = [
+                    ''
+                    ],
         )
         """
 

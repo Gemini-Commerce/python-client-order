@@ -45,10 +45,17 @@ class TestOrderDataCustomerInfo(unittest.TestCase):
                 segment = '',
                 data = '',
                 certified_email = '',
-                tax_code = ''
+                tax_code = '',
+                sdi_code = '',
+                fiscal_code = '',
+                company_name = '',
+                agent_grn = ''
             )
         else:
             return OrderDataCustomerInfo(
+                firstname = '',
+                lastname = '',
+                email = '',
         )
         """
 

@@ -42,6 +42,8 @@ class TestOrderReportShipmentDeliveryRequest(unittest.TestCase):
             )
         else:
             return OrderReportShipmentDeliveryRequest(
+                tenant_id = '',
+                shipment_id = '',
         )
         """
 

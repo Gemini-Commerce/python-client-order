@@ -24,6 +24,7 @@ from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from order.models.order_postal_address import OrderPostalAddress
 from order.models.order_shipment_item import OrderShipmentItem
+from order.models.shipment_tracking import ShipmentTracking
 try:
     from typing import Self
 except ImportError:
@@ -33,15 +34,17 @@ class OrderCreateShipmentRequest(BaseModel):
     """
     OrderCreateShipmentRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
-    items: Optional[List[OrderShipmentItem]] = None
-    address: Optional[OrderPostalAddress] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    order_id: StrictStr = Field(alias="orderId")
+    items: List[OrderShipmentItem]
+    address: OrderPostalAddress
     from_address: Optional[OrderPostalAddress] = Field(default=None, alias="fromAddress")
     return_address: Optional[OrderPostalAddress] = Field(default=None, alias="returnAddress")
+    tracking: Optional[List[ShipmentTracking]] = None
+    return_tracking: Optional[List[ShipmentTracking]] = Field(default=None, alias="returnTracking")
     code: Optional[StrictStr] = None
     method: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["tenantId", "orderId", "items", "address", "fromAddress", "returnAddress", "code", "method"]
+    __properties: ClassVar[List[str]] = ["tenantId", "orderId", "items", "address", "fromAddress", "returnAddress", "tracking", "returnTracking", "code", "method"]
 
     model_config = {
         "populate_by_name": True,
@@ -96,6 +99,20 @@ class OrderCreateShipmentRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of return_address
         if self.return_address:
             _dict['returnAddress'] = self.return_address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in tracking (list)
+        _items = []
+        if self.tracking:
+            for _item in self.tracking:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['tracking'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in return_tracking (list)
+        _items = []
+        if self.return_tracking:
+            for _item in self.return_tracking:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['returnTracking'] = _items
         return _dict
 
     @classmethod
@@ -114,6 +131,8 @@ class OrderCreateShipmentRequest(BaseModel):
             "address": OrderPostalAddress.from_dict(obj.get("address")) if obj.get("address") is not None else None,
             "fromAddress": OrderPostalAddress.from_dict(obj.get("fromAddress")) if obj.get("fromAddress") is not None else None,
             "returnAddress": OrderPostalAddress.from_dict(obj.get("returnAddress")) if obj.get("returnAddress") is not None else None,
+            "tracking": [ShipmentTracking.from_dict(_item) for _item in obj.get("tracking")] if obj.get("tracking") is not None else None,
+            "returnTracking": [ShipmentTracking.from_dict(_item) for _item in obj.get("returnTracking")] if obj.get("returnTracking") is not None else None,
             "code": obj.get("code"),
             "method": obj.get("method")
         })

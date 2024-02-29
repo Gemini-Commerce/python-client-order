@@ -45,6 +45,8 @@ class TestOrderCreateRefundTransactionRequest(unittest.TestCase):
             )
         else:
             return OrderCreateRefundTransactionRequest(
+                tenant_id = '',
+                refund_id = '',
         )
         """
 

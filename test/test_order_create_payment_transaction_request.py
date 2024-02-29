@@ -44,6 +44,9 @@ class TestOrderCreatePaymentTransactionRequest(unittest.TestCase):
             )
         else:
             return OrderCreatePaymentTransactionRequest(
+                tenant_id = '',
+                payment_id = '',
+                type = 'UNKNOWN',
         )
         """
 

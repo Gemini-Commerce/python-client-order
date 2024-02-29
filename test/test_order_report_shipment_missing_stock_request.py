@@ -43,6 +43,8 @@ class TestOrderReportShipmentMissingStockRequest(unittest.TestCase):
             )
         else:
             return OrderReportShipmentMissingStockRequest(
+                tenant_id = '',
+                shipment_id = '',
         )
         """
 

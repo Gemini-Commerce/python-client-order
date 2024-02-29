@@ -31,8 +31,8 @@ class OrderReportShipmentMissingStockRequest(BaseModel):
     """
     OrderReportShipmentMissingStockRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    shipment_id: Optional[StrictStr] = Field(default=None, alias="shipmentId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    shipment_id: StrictStr = Field(alias="shipmentId")
     reason: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["tenantId", "shipmentId", "reason"]
 

@@ -42,6 +42,8 @@ class TestOrderGetOrderByCartIdRequest(unittest.TestCase):
             )
         else:
             return OrderGetOrderByCartIdRequest(
+                tenant_id = '',
+                cart_id = '',
         )
         """
 

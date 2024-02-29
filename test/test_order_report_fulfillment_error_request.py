@@ -42,6 +42,8 @@ class TestOrderReportFulfillmentErrorRequest(unittest.TestCase):
             )
         else:
             return OrderReportFulfillmentErrorRequest(
+                tenant_id = '',
+                fulfillment_id = '',
         )
         """
 

@@ -68,6 +68,12 @@ class TestOrderOrderDataItem(unittest.TestCase):
                 row_base_price = order.models.order_money.orderMoney(
                     units = '', 
                     micros = 56, ),
+                unit_custom_price = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
+                row_custom_price = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
                 vat_percentage = 1.337,
                 vat_inaccurate = True,
                 vat_calculated = True,
@@ -81,7 +87,28 @@ class TestOrderOrderDataItem(unittest.TestCase):
                 promotion_grn = [
                     ''
                     ],
-                product_is_virtual = True
+                product_is_virtual = True,
+                product_configuration = [
+                    order.models.item_product_configuration_step.ItemProductConfigurationStep(
+                        id = '', 
+                        grn = '', 
+                        label = '', 
+                        description = '', 
+                        options = [
+                            order.models.product_configuration_step_option.ProductConfigurationStepOption(
+                                id = '', 
+                                grn = '', 
+                                label = '', 
+                                price_variation = order.models.order_money.orderMoney(
+                                    units = '', 
+                                    micros = 56, ), 
+                                image = order.models.option_image.OptionImage(
+                                    grn = '', 
+                                    url = '', ), 
+                                has_quantity = True, 
+                                quantity = 56, )
+                            ], )
+                    ]
             )
         else:
             return OrderOrderDataItem(

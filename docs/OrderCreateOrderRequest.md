@@ -6,23 +6,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**number**| **str** |   | [optional]
+**tenant_id**| **str** |   |
+**number**| **str** |   |
 **channel**| **str** |   | [optional]
-**market**| **str** |   | [optional]
-**locale**| **str** |   | [optional]
-**items**| [**List[OrderOrderDataItem]**](OrderOrderDataItem.md) |   | [optional]
+**market**| **str** |   |
+**locale**| **str** |   |
+**items**| [**List[OrderOrderDataItem]**](OrderOrderDataItem.md) |   |
 **payments_info**| [**List[OrderDataPaymentInfo]**](OrderDataPaymentInfo.md) |   | [optional]
 **shipments_info**| [**List[OrderDataShipmentInfo]**](OrderDataShipmentInfo.md) |   | [optional]
 **promotions**| [**List[OrderDataPromotionInfo]**](OrderDataPromotionInfo.md) |   | [optional]
 **payments**| [**List[CreateOrderRequestInitialPayment]**](CreateOrderRequestInitialPayment.md) |   | [optional]
-**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  | [optional]
-**subtotals**| [**Dict[str, OrderDataSubtotal]**](OrderDataSubtotal.md) |   | [optional]
-**totals**| [**Dict[str, OrderDataTotal]**](OrderDataTotal.md) |   | [optional]
-**vat_included**| **bool** |   | [optional]
-**billing_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   | [optional]
-**shipping_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   | [optional]
-**customer_info**| [**OrderDataCustomerInfo**](OrderDataCustomerInfo.md) |   | [optional]
+**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  |
+**subtotals**| [**Dict[str, OrderDataSubtotal]**](OrderDataSubtotal.md) |   |
+**totals**| [**Dict[str, OrderDataTotal]**](OrderDataTotal.md) |   |
+**vat_included**| **bool** |   |
+**billing_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   |
+**shipping_address**| [**OrderPostalAddress**](OrderPostalAddress.md) |   |
+**customer_info**| [**OrderDataCustomerInfo**](OrderDataCustomerInfo.md) |   |
 **cart_grn**| **str** |   | [optional]
 **on_hold**| **bool** |   | [optional]
 **notes**| **str** |   | [optional]

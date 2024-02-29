@@ -33,11 +33,11 @@ class OrderCreatePaymentRequest(BaseModel):
     """
     OrderCreatePaymentRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
-    code: Optional[StrictStr] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    order_id: StrictStr = Field(alias="orderId")
+    code: StrictStr
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
-    amount: Optional[OrderMoney] = None
+    amount: OrderMoney
     cc_info: Optional[PaymentCcInfo] = Field(default=None, alias="ccInfo")
     __properties: ClassVar[List[str]] = ["tenantId", "orderId", "code", "additionalInfo", "amount", "ccInfo"]
 

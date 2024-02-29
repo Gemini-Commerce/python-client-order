@@ -42,6 +42,8 @@ class TestOrderReportFulfillmentNotResolvableRequest(unittest.TestCase):
             )
         else:
             return OrderReportFulfillmentNotResolvableRequest(
+                tenant_id = '',
+                fulfillment_id = '',
         )
         """
 

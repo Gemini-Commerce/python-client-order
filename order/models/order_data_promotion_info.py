@@ -33,11 +33,11 @@ class OrderDataPromotionInfo(BaseModel):
     OrderDataPromotionInfo
     """ # noqa: E501
     promotion_grn: Optional[StrictStr] = Field(default=None, alias="promotionGrn")
-    type: Optional[StrictStr] = None
+    type: StrictStr
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
-    name: Optional[StrictStr] = None
+    name: StrictStr
     description: Optional[StrictStr] = None
-    amount: Optional[OrderMoney] = None
+    amount: OrderMoney
     coupon_code: Optional[StrictStr] = Field(default=None, alias="couponCode")
     vat_amount: Optional[OrderMoney] = Field(default=None, alias="vatAmount")
     vat_percentage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="vatPercentage")

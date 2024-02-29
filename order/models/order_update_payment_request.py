@@ -32,8 +32,8 @@ class OrderUpdatePaymentRequest(BaseModel):
     """
     OrderUpdatePaymentRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    payment_id: StrictStr = Field(alias="paymentId")
     cc_info: Optional[PaymentCcInfo] = Field(default=None, alias="ccInfo")
     __properties: ClassVar[List[str]] = ["tenantId", "paymentId", "ccInfo"]
 

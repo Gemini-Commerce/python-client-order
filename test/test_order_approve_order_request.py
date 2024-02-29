@@ -42,6 +42,8 @@ class TestOrderApproveOrderRequest(unittest.TestCase):
             )
         else:
             return OrderApproveOrderRequest(
+                tenant_id = '',
+                order_id = '',
         )
         """
 

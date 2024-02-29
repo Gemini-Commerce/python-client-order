@@ -29,7 +29,7 @@ except ImportError:
 
 class OrderCurrency(str, Enum):
     """
-    OrderCurrency
+    Stands for Albania, not all ;-)
     """
 
     """

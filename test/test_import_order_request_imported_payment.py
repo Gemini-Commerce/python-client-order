@@ -54,10 +54,19 @@ class TestImportOrderRequestImportedPayment(unittest.TestCase):
                     number_enc = '', 
                     owner = '', 
                     avs_status = '', 
-                    type = '', )
+                    type = '', ),
+                is_upfront = True
             )
         else:
             return ImportOrderRequestImportedPayment(
+                code = '',
+                amounts = [
+                    order.models.order_payment_amount.orderPaymentAmount(
+                        code = 'UNKNOWN', 
+                        value = order.models.order_money.orderMoney(
+                            units = '', 
+                            micros = 56, ), )
+                    ],
         )
         """
 

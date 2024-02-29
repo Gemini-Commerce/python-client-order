@@ -55,6 +55,11 @@ class TestOrderDataPromotionInfo(unittest.TestCase):
             )
         else:
             return OrderDataPromotionInfo(
+                type = '',
+                name = '',
+                amount = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

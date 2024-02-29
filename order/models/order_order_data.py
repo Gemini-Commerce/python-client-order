@@ -24,6 +24,7 @@ from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from order.models.order_currency import OrderCurrency
 from order.models.order_data_customer_info import OrderDataCustomerInfo
+from order.models.order_data_document import OrderDataDocument
 from order.models.order_data_history import OrderDataHistory
 from order.models.order_data_payment_info import OrderDataPaymentInfo
 from order.models.order_data_promotion_info import OrderDataPromotionInfo
@@ -52,8 +53,9 @@ class OrderOrderData(BaseModel):
     status: Optional[StrictStr] = None
     channel: Optional[StrictStr] = None
     market: Optional[StrictStr] = None
-    locale: Optional[StrictStr] = None
+    locale: StrictStr
     additional_info: Optional[Dict[str, Any]] = Field(default=None, alias="additionalInfo")
+    documents: Optional[List[OrderDataDocument]] = None
     items: Optional[List[OrderOrderDataItem]] = None
     payments: Optional[List[OrderPayment]] = None
     shipments: Optional[List[OrderShipment]] = None
@@ -75,7 +77,7 @@ class OrderOrderData(BaseModel):
     is_deleted: Optional[StrictBool] = Field(default=None, description="this field is used to delete an order in \"soft-delete mode\". This field must be used from get/list endpoint to exclude these orders.", alias="isDeleted")
     inserted_at: Optional[datetime] = Field(default=None, description="this field is used to save the original created_at order date. The created_at field is used to filter data.", alias="insertedAt")
     deleted_at: Optional[datetime] = Field(default=None, alias="deletedAt")
-    __properties: ClassVar[List[str]] = ["createdAt", "updatedAt", "id", "grn", "number", "status", "channel", "market", "locale", "additionalInfo", "items", "payments", "shipments", "paymentsInfo", "shipmentsInfo", "promotions", "currency", "subtotals", "totals", "vatIncluded", "billingAddress", "shippingAddress", "customerInfo", "cartGrn", "onHold", "historyEvents", "fulfillments", "notes", "isDeleted", "insertedAt", "deletedAt"]
+    __properties: ClassVar[List[str]] = ["createdAt", "updatedAt", "id", "grn", "number", "status", "channel", "market", "locale", "additionalInfo", "documents", "items", "payments", "shipments", "paymentsInfo", "shipmentsInfo", "promotions", "currency", "subtotals", "totals", "vatIncluded", "billingAddress", "shippingAddress", "customerInfo", "cartGrn", "onHold", "historyEvents", "fulfillments", "notes", "isDeleted", "insertedAt", "deletedAt"]
 
     model_config = {
         "populate_by_name": True,
@@ -107,13 +109,36 @@ class OrderOrderData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         _dict = self.model_dump(
             by_alias=True,
             exclude={
+                "created_at",
+                "updated_at",
+                "id",
+                "grn",
+                "status",
+                "fulfillments",
+                "inserted_at",
+                "deleted_at",
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in documents (list)
+        _items = []
+        if self.documents:
+            for _item in self.documents:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['documents'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
@@ -215,6 +240,7 @@ class OrderOrderData(BaseModel):
             "market": obj.get("market"),
             "locale": obj.get("locale"),
             "additionalInfo": obj.get("additionalInfo"),
+            "documents": [OrderDataDocument.from_dict(_item) for _item in obj.get("documents")] if obj.get("documents") is not None else None,
             "items": [OrderOrderDataItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
             "payments": [OrderPayment.from_dict(_item) for _item in obj.get("payments")] if obj.get("payments") is not None else None,
             "shipments": [OrderShipment.from_dict(_item) for _item in obj.get("shipments")] if obj.get("shipments") is not None else None,

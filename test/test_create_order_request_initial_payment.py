@@ -57,6 +57,10 @@ class TestCreateOrderRequestInitialPayment(unittest.TestCase):
             )
         else:
             return CreateOrderRequestInitialPayment(
+                code = '',
+                amount = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

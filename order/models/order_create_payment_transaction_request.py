@@ -32,9 +32,9 @@ class OrderCreatePaymentTransactionRequest(BaseModel):
     """
     OrderCreatePaymentTransactionRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
-    type: Optional[OrderTransactionType] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    payment_id: StrictStr = Field(alias="paymentId")
+    type: OrderTransactionType
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     __properties: ClassVar[List[str]] = ["tenantId", "paymentId", "type", "additionalInfo"]
 

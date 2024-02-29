@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**order_id**| **str** |   | [optional]
-**code**| **str** |   | [optional]
+**tenant_id**| **str** |   |
+**order_id**| **str** |   |
+**code**| **str** |   |
 **additional_info**| **str** |   | [optional]
-**amount**| [**OrderMoney**](OrderMoney.md) |   | [optional]
+**amount**| [**OrderMoney**](OrderMoney.md) |   |
 **cc_info**| [**PaymentCcInfo**](PaymentCcInfo.md) |   | [optional]
 
 

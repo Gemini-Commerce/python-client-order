@@ -40,10 +40,17 @@ class TestOrderListOrdersByCustomerRequest(unittest.TestCase):
                 tenant_id = '',
                 customer_grn = '',
                 page_size = 56,
-                page_token = ''
+                page_token = '',
+                order_by = [
+                    order.models.order_order_by.orderOrderBy(
+                        field = '', 
+                        direction = 'DEFAULT', )
+                    ]
             )
         else:
             return OrderListOrdersByCustomerRequest(
+                tenant_id = '',
+                customer_grn = '',
         )
         """
 

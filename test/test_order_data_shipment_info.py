@@ -94,6 +94,11 @@ class TestOrderDataShipmentInfo(unittest.TestCase):
             )
         else:
             return OrderDataShipmentInfo(
+                reference = '',
+                code = '',
+                amount = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

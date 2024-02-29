@@ -43,6 +43,8 @@ class TestOrderCreateHistoryRequest(unittest.TestCase):
             )
         else:
             return OrderCreateHistoryRequest(
+                tenant_id = '',
+                order_id = '',
         )
         """
 

@@ -44,6 +44,10 @@ class TestOrderDataTotal(unittest.TestCase):
             )
         else:
             return OrderDataTotal(
+                code = 'UNKNOWN',
+                value = order.models.order_money.orderMoney(
+                    units = '', 
+                    micros = 56, ),
         )
         """
 

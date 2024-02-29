@@ -44,6 +44,10 @@ class TestOrderPrintOrdersLabelsRequest(unittest.TestCase):
             )
         else:
             return OrderPrintOrdersLabelsRequest(
+                tenant_id = '',
+                order_numbers = [
+                    ''
+                    ],
         )
         """
 

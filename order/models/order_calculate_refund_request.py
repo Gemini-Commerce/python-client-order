@@ -32,8 +32,8 @@ class OrderCalculateRefundRequest(BaseModel):
     """
     OrderCalculateRefundRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    payment_id: StrictStr = Field(alias="paymentId")
     items: Optional[List[OrderRefundItem]] = None
     shipping: Optional[StrictBool] = Field(default=None, description="Boolean indicating whether to calculate refund for shipping.")
     __properties: ClassVar[List[str]] = ["tenantId", "paymentId", "items", "shipping"]

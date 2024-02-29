@@ -42,6 +42,8 @@ class TestOrderRetryFulfillmentRequest(unittest.TestCase):
             )
         else:
             return OrderRetryFulfillmentRequest(
+                tenant_id = '',
+                fulfillment_id = '',
         )
         """
 

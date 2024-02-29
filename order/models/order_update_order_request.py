@@ -32,10 +32,10 @@ class OrderUpdateOrderRequest(BaseModel):
     """
     OrderUpdateOrderRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    id: Optional[StrictStr] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    id: StrictStr
     payload: Optional[UpdateOrderRequestPayload] = None
-    field_mask: Optional[List[StrictStr]] = Field(default=None, alias="fieldMask")
+    field_mask: Optional[StrictStr] = Field(default=None, alias="fieldMask")
     __properties: ClassVar[List[str]] = ["tenantId", "id", "payload", "fieldMask"]
 
     model_config = {

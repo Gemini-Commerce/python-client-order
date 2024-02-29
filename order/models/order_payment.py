@@ -36,7 +36,7 @@ class OrderPayment(BaseModel):
     """ # noqa: E501
     order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
     id: Optional[StrictStr] = None
-    code: Optional[StrictStr] = None
+    code: Optional[StrictStr] = Field(default=None, description="payment type stripe, paypal..")
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     amounts: Optional[List[OrderPaymentAmount]] = None
     cc_info: Optional[PaymentCcInfo] = Field(default=None, alias="ccInfo")

@@ -66,6 +66,12 @@ configuration = order.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 
 # Enter a context with an instance of the API client
 with order.ApiClient(configuration) as api_client:
@@ -119,6 +125,8 @@ Class | Method | HTTP request | Description
 *OrderApi* | [**list_orders_by_customer**](docs/OrderApi.md#list_orders_by_customer) | **POST** /order.Order/ListOrdersByCustomer | List Orders by Customer
 *OrderApi* | [**list_orders_by_numbers**](docs/OrderApi.md#list_orders_by_numbers) | **POST** /order.Order/ListOrdersByNumbers | List Orders by Numbers
 *OrderApi* | [**list_shipments**](docs/OrderApi.md#list_shipments) | **POST** /order.Order/ListShipments | List Shipments
+*OrderApi* | [**order_add_document**](docs/OrderApi.md#order_add_document) | **POST** /order.Order/AddDocument | Documents
+*OrderApi* | [**order_remove_document_by_code**](docs/OrderApi.md#order_remove_document_by_code) | **POST** /order.Order/RemoveDocumentByCode | 
 *OrderApi* | [**print_orders_labels**](docs/OrderApi.md#print_orders_labels) | **POST** /order.Order/PrintOrdersLabels | Print Orders Labels
 *OrderApi* | [**quash_fulfillment**](docs/OrderApi.md#quash_fulfillment) | **POST** /order.Order/QuashFulfillment | Quash Fulfillment
 *OrderApi* | [**quash_shipment**](docs/OrderApi.md#quash_shipment) | **POST** /order.Order/QuashShipment | Quash Shipment
@@ -145,6 +153,9 @@ Class | Method | HTTP request | Description
  - [CreateOrderRequestInitialPayment](docs/CreateOrderRequestInitialPayment.md)
  - [ImportOrderRequestImportedPayment](docs/ImportOrderRequestImportedPayment.md)
  - [InitialPaymentInitialTransaction](docs/InitialPaymentInitialTransaction.md)
+ - [ItemProductConfigurationStep](docs/ItemProductConfigurationStep.md)
+ - [OptionImage](docs/OptionImage.md)
+ - [OrderAddDocumentRequest](docs/OrderAddDocumentRequest.md)
  - [OrderApproveOrderRequest](docs/OrderApproveOrderRequest.md)
  - [OrderAssignShipmentRequest](docs/OrderAssignShipmentRequest.md)
  - [OrderByDirection](docs/OrderByDirection.md)
@@ -164,6 +175,7 @@ Class | Method | HTTP request | Description
  - [OrderCreateShipmentRequest](docs/OrderCreateShipmentRequest.md)
  - [OrderCurrency](docs/OrderCurrency.md)
  - [OrderDataCustomerInfo](docs/OrderDataCustomerInfo.md)
+ - [OrderDataDocument](docs/OrderDataDocument.md)
  - [OrderDataHistory](docs/OrderDataHistory.md)
  - [OrderDataPaymentInfo](docs/OrderDataPaymentInfo.md)
  - [OrderDataPromotionInfo](docs/OrderDataPromotionInfo.md)
@@ -214,6 +226,7 @@ Class | Method | HTTP request | Description
  - [OrderRefundAmount](docs/OrderRefundAmount.md)
  - [OrderRefundAmountCode](docs/OrderRefundAmountCode.md)
  - [OrderRefundItem](docs/OrderRefundItem.md)
+ - [OrderRemoveDocumentByCodeRequest](docs/OrderRemoveDocumentByCodeRequest.md)
  - [OrderReportFulfillmentErrorRequest](docs/OrderReportFulfillmentErrorRequest.md)
  - [OrderReportFulfillmentNotResolvableRequest](docs/OrderReportFulfillmentNotResolvableRequest.md)
  - [OrderReportFulfillmentReadyRequest](docs/OrderReportFulfillmentReadyRequest.md)
@@ -238,6 +251,7 @@ Class | Method | HTTP request | Description
  - [OrderUpdatePaymentRequest](docs/OrderUpdatePaymentRequest.md)
  - [PaymentCcInfo](docs/PaymentCcInfo.md)
  - [PrintOrdersLabelsResponseFailedOrder](docs/PrintOrdersLabelsResponseFailedOrder.md)
+ - [ProductConfigurationStepOption](docs/ProductConfigurationStepOption.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [ProtobufNullValue](docs/ProtobufNullValue.md)
  - [RpcStatus](docs/RpcStatus.md)
@@ -248,7 +262,22 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+<a id="Authorization"></a>
+### Authorization
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+<a id="standardAuthorization"></a>
+### standardAuthorization
+
+- **Type**: OAuth
+- **Flow**: implicit
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 
 ## Author

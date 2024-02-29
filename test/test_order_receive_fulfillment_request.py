@@ -42,6 +42,8 @@ class TestOrderReceiveFulfillmentRequest(unittest.TestCase):
             )
         else:
             return OrderReceiveFulfillmentRequest(
+                tenant_id = '',
+                fulfillment_id = '',
         )
         """
 

@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at**| **datetime** |   | [optional]
-**updated_at**| **datetime** |   | [optional]
+**created_at**| **datetime** |   | [optional] [readonly]
+**updated_at**| **datetime** |   | [optional] [readonly]
 **order_id**| **str** |   | [optional]
 **id**| **str** |   | [optional]
 **status**| **str** |   | [optional]

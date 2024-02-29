@@ -38,7 +38,7 @@ class PaymentCcInfo(BaseModel):
     number_enc: Optional[StrictStr] = Field(default=None, alias="numberEnc")
     owner: Optional[StrictStr] = None
     avs_status: Optional[StrictStr] = Field(default=None, alias="avsStatus")
-    type: Optional[StrictStr] = None
+    type: Optional[StrictStr] = Field(default=None, description="card type MasterCard, Visa..")
     __properties: ClassVar[List[str]] = ["approval", "expMonth", "expYear", "last4", "numberEnc", "owner", "avsStatus", "type"]
 
     model_config = {

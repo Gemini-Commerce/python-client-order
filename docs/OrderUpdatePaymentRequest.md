@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**payment_id**| **str** |   | [optional]
+**tenant_id**| **str** |   |
+**payment_id**| **str** |   |
 **cc_info**| [**PaymentCcInfo**](PaymentCcInfo.md) |   | [optional]
 
 

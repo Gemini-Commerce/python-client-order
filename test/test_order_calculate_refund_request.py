@@ -48,6 +48,8 @@ class TestOrderCalculateRefundRequest(unittest.TestCase):
             )
         else:
             return OrderCalculateRefundRequest(
+                tenant_id = '',
+                payment_id = '',
         )
         """
 

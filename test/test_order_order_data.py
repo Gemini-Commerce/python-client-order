@@ -47,6 +47,14 @@ class TestOrderOrderData(unittest.TestCase):
                 market = '',
                 locale = '',
                 additional_info = order.models.additional_info.additionalInfo(),
+                documents = [
+                    order.models.order_data_document.OrderDataDocument(
+                        code = '', 
+                        label = '', 
+                        asset_grn = '', 
+                        url = '', 
+                        inserted_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ],
                 items = [
                     order.models.order_order_data_item.orderOrderDataItem(
                         id = '', 
@@ -66,6 +74,8 @@ class TestOrderOrderData(unittest.TestCase):
                         row_vat_amount = , 
                         discount_amount = , 
                         row_base_price = , 
+                        unit_custom_price = , 
+                        row_custom_price = , 
                         vat_percentage = 1.337, 
                         vat_inaccurate = True, 
                         vat_calculated = True, 
@@ -79,7 +89,26 @@ class TestOrderOrderData(unittest.TestCase):
                         promotion_grn = [
                             ''
                             ], 
-                        product_is_virtual = True, )
+                        product_is_virtual = True, 
+                        product_configuration = [
+                            order.models.item_product_configuration_step.ItemProductConfigurationStep(
+                                id = '', 
+                                grn = '', 
+                                label = '', 
+                                description = '', 
+                                options = [
+                                    order.models.product_configuration_step_option.ProductConfigurationStepOption(
+                                        id = '', 
+                                        grn = '', 
+                                        label = '', 
+                                        price_variation = , 
+                                        image = order.models.option_image.OptionImage(
+                                            grn = '', 
+                                            url = '', ), 
+                                        has_quantity = True, 
+                                        quantity = 56, )
+                                    ], )
+                            ], )
                     ],
                 payments = [
                     order.models.order_payment.orderPayment(
@@ -328,7 +357,11 @@ class TestOrderOrderData(unittest.TestCase):
                     segment = '', 
                     data = '', 
                     certified_email = '', 
-                    tax_code = '', ),
+                    tax_code = '', 
+                    sdi_code = '', 
+                    fiscal_code = '', 
+                    company_name = '', 
+                    agent_grn = '', ),
                 cart_grn = '',
                 on_hold = True,
                 history_events = [
@@ -357,6 +390,7 @@ class TestOrderOrderData(unittest.TestCase):
             )
         else:
             return OrderOrderData(
+                locale = '',
         )
         """
 

@@ -32,7 +32,7 @@ class OrderHoldOrderRequest(BaseModel):
     OrderHoldOrderRequest
     """ # noqa: E501
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
+    order_id: StrictStr = Field(alias="orderId")
     reason: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["tenantId", "orderId", "reason"]
 

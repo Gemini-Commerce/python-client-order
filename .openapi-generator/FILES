@@ -1,12 +1,14 @@
 .github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/CreateOrderRequestInitialPayment.md
 docs/ImportOrderRequestImportedPayment.md
 docs/InitialPaymentInitialTransaction.md
+docs/ItemProductConfigurationStep.md
+docs/OptionImage.md
+docs/OrderAddDocumentRequest.md
 docs/OrderApi.md
 docs/OrderApproveOrderRequest.md
 docs/OrderAssignShipmentRequest.md
@@ -27,6 +29,7 @@ docs/OrderCreateRefundTransactionRequest.md
 docs/OrderCreateShipmentRequest.md
 docs/OrderCurrency.md
 docs/OrderDataCustomerInfo.md
+docs/OrderDataDocument.md
 docs/OrderDataHistory.md
 docs/OrderDataPaymentInfo.md
 docs/OrderDataPromotionInfo.md
@@ -77,6 +80,7 @@ docs/OrderRefund.md
 docs/OrderRefundAmount.md
 docs/OrderRefundAmountCode.md
 docs/OrderRefundItem.md
+docs/OrderRemoveDocumentByCodeRequest.md
 docs/OrderReportFulfillmentErrorRequest.md
 docs/OrderReportFulfillmentNotResolvableRequest.md
 docs/OrderReportFulfillmentReadyRequest.md
@@ -101,6 +105,7 @@ docs/OrderUpdateOrderRequest.md
 docs/OrderUpdatePaymentRequest.md
 docs/PaymentCcInfo.md
 docs/PrintOrdersLabelsResponseFailedOrder.md
+docs/ProductConfigurationStepOption.md
 docs/ProtobufAny.md
 docs/ProtobufNullValue.md
 docs/RpcStatus.md
@@ -118,6 +123,9 @@ order/models/__init__.py
 order/models/create_order_request_initial_payment.py
 order/models/import_order_request_imported_payment.py
 order/models/initial_payment_initial_transaction.py
+order/models/item_product_configuration_step.py
+order/models/option_image.py
+order/models/order_add_document_request.py
 order/models/order_approve_order_request.py
 order/models/order_assign_shipment_request.py
 order/models/order_by_direction.py
@@ -137,6 +145,7 @@ order/models/order_create_refund_transaction_request.py
 order/models/order_create_shipment_request.py
 order/models/order_currency.py
 order/models/order_data_customer_info.py
+order/models/order_data_document.py
 order/models/order_data_history.py
 order/models/order_data_payment_info.py
 order/models/order_data_promotion_info.py
@@ -187,6 +196,7 @@ order/models/order_refund.py
 order/models/order_refund_amount.py
 order/models/order_refund_amount_code.py
 order/models/order_refund_item.py
+order/models/order_remove_document_by_code_request.py
 order/models/order_report_fulfillment_error_request.py
 order/models/order_report_fulfillment_not_resolvable_request.py
 order/models/order_report_fulfillment_ready_request.py
@@ -211,6 +221,7 @@ order/models/order_update_order_request.py
 order/models/order_update_payment_request.py
 order/models/payment_cc_info.py
 order/models/print_orders_labels_response_failed_order.py
+order/models/product_configuration_step_option.py
 order/models/protobuf_any.py
 order/models/protobuf_null_value.py
 order/models/rpc_status.py
@@ -227,6 +238,9 @@ test/__init__.py
 test/test_create_order_request_initial_payment.py
 test/test_import_order_request_imported_payment.py
 test/test_initial_payment_initial_transaction.py
+test/test_item_product_configuration_step.py
+test/test_option_image.py
+test/test_order_add_document_request.py
 test/test_order_api.py
 test/test_order_approve_order_request.py
 test/test_order_assign_shipment_request.py
@@ -247,6 +261,7 @@ test/test_order_create_refund_transaction_request.py
 test/test_order_create_shipment_request.py
 test/test_order_currency.py
 test/test_order_data_customer_info.py
+test/test_order_data_document.py
 test/test_order_data_history.py
 test/test_order_data_payment_info.py
 test/test_order_data_promotion_info.py
@@ -297,6 +312,7 @@ test/test_order_refund.py
 test/test_order_refund_amount.py
 test/test_order_refund_amount_code.py
 test/test_order_refund_item.py
+test/test_order_remove_document_by_code_request.py
 test/test_order_report_fulfillment_error_request.py
 test/test_order_report_fulfillment_not_resolvable_request.py
 test/test_order_report_fulfillment_ready_request.py
@@ -321,6 +337,7 @@ test/test_order_update_order_request.py
 test/test_order_update_payment_request.py
 test/test_payment_cc_info.py
 test/test_print_orders_labels_response_failed_order.py
+test/test_product_configuration_step_option.py
 test/test_protobuf_any.py
 test/test_protobuf_null_value.py
 test/test_rpc_status.py

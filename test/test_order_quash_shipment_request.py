@@ -43,6 +43,8 @@ class TestOrderQuashShipmentRequest(unittest.TestCase):
             )
         else:
             return OrderQuashShipmentRequest(
+                tenant_id = '',
+                shipment_id = '',
         )
         """
 

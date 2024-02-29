@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -31,8 +31,8 @@ class OrderPrintOrdersLabelsRequest(BaseModel):
     """
     OrderPrintOrdersLabelsRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_numbers: Optional[List[StrictStr]] = Field(default=None, alias="orderNumbers")
+    tenant_id: StrictStr = Field(alias="tenantId")
+    order_numbers: List[StrictStr] = Field(alias="orderNumbers")
     __properties: ClassVar[List[str]] = ["tenantId", "orderNumbers"]
 
     model_config = {

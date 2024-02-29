@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from order.models.order_fulfillment_item import OrderFulfillmentItem
@@ -32,9 +32,9 @@ class OrderCreateFulfillmentRequest(BaseModel):
     """
     OrderCreateFulfillmentRequest
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    order_id: Optional[StrictStr] = Field(default=None, alias="orderId")
-    items: Optional[List[OrderFulfillmentItem]] = None
+    tenant_id: StrictStr = Field(alias="tenantId")
+    order_id: StrictStr = Field(alias="orderId")
+    items: List[OrderFulfillmentItem]
     __properties: ClassVar[List[str]] = ["tenantId", "orderId", "items"]
 
     model_config = {

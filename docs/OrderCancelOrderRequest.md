@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id**| **str** |   | [optional]
-**order_id**| **str** |   | [optional]
+**tenant_id**| **str** |   |
+**order_id**| **str** |   |
 **reason**| **str** |   | [optional]
 
 
