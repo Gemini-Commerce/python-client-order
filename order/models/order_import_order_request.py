@@ -20,7 +20,7 @@ import json
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from order.models.import_order_request_imported_payment import ImportOrderRequestImportedPayment
 from order.models.order_currency import OrderCurrency
@@ -57,7 +57,8 @@ class OrderImportOrderRequest(BaseModel):
     totals: Dict[str, OrderDataTotal]
     status: StrictStr
     currency: OrderCurrency
-    __properties: ClassVar[List[str]] = ["tenantId", "createdAt", "number", "channel", "market", "locale", "customerInfo", "shippingAddress", "billingAddress", "payments", "paymentsInfo", "shipmentsInfo", "items", "subtotals", "totals", "status", "currency"]
+    vat_included: Optional[StrictBool] = Field(default=None, alias="vatIncluded")
+    __properties: ClassVar[List[str]] = ["tenantId", "createdAt", "number", "channel", "market", "locale", "customerInfo", "shippingAddress", "billingAddress", "payments", "paymentsInfo", "shipmentsInfo", "items", "subtotals", "totals", "status", "currency", "vatIncluded"]
 
     model_config = {
         "populate_by_name": True,
@@ -185,7 +186,8 @@ class OrderImportOrderRequest(BaseModel):
             if obj.get("totals") is not None
             else None,
             "status": obj.get("status"),
-            "currency": obj.get("currency")
+            "currency": obj.get("currency"),
+            "vatIncluded": obj.get("vatIncluded")
         })
         return _obj
 

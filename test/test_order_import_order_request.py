@@ -254,7 +254,8 @@ class TestOrderImportOrderRequest(unittest.TestCase):
                             micros = 56, ), )
                     },
                 status = '',
-                currency = 'XXX'
+                currency = 'XXX',
+                vat_included = True
             )
         else:
             return OrderImportOrderRequest(

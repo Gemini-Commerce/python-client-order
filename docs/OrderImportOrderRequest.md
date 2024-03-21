@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **totals**| [**Dict[str, OrderDataTotal]**](OrderDataTotal.md) |   |
 **status**| **str** |   |
 **currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  |
+**vat_included**| **bool** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
