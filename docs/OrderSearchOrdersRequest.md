@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **to_date**| **datetime** |   | [optional]
 **payment_filter**| [**OrderPaymentFilter**](OrderPaymentFilter.md) |   | [optional]
 **agent_grn**| **str** |   | [optional]
-**updated_from**| **datetime** |   | [optional]
-**updated_to**| **datetime** |   | [optional]
+**updated_at_from**| **datetime** |   | [optional]
+**updated_at_to**| **datetime** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

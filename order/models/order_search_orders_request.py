@@ -44,9 +44,9 @@ class OrderSearchOrdersRequest(BaseModel):
     to_date: Optional[datetime] = Field(default=None, alias="toDate")
     payment_filter: Optional[OrderPaymentFilter] = Field(default=None, alias="paymentFilter")
     agent_grn: Optional[StrictStr] = Field(default=None, alias="agentGrn")
-    updated_from: Optional[datetime] = Field(default=None, alias="updatedFrom")
-    updated_to: Optional[datetime] = Field(default=None, alias="updatedTo")
-    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn", "updatedFrom", "updatedTo"]
+    updated_at_from: Optional[datetime] = Field(default=None, alias="updatedAtFrom")
+    updated_at_to: Optional[datetime] = Field(default=None, alias="updatedAtTo")
+    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn", "updatedAtFrom", "updatedAtTo"]
 
     model_config = {
         "populate_by_name": True,
@@ -120,8 +120,8 @@ class OrderSearchOrdersRequest(BaseModel):
             "toDate": obj.get("toDate"),
             "paymentFilter": OrderPaymentFilter.from_dict(obj.get("paymentFilter")) if obj.get("paymentFilter") is not None else None,
             "agentGrn": obj.get("agentGrn"),
-            "updatedFrom": obj.get("updatedFrom"),
-            "updatedTo": obj.get("updatedTo")
+            "updatedAtFrom": obj.get("updatedAtFrom"),
+            "updatedAtTo": obj.get("updatedAtTo")
         })
         return _obj
 
