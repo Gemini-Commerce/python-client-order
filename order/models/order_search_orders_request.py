@@ -20,7 +20,7 @@ import json
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
 from order.models.order_order_by import OrderOrderBy
 from order.models.order_payment_filter import OrderPaymentFilter
@@ -46,7 +46,8 @@ class OrderSearchOrdersRequest(BaseModel):
     agent_grn: Optional[StrictStr] = Field(default=None, alias="agentGrn")
     updated_at_from: Optional[datetime] = Field(default=None, alias="updatedAtFrom")
     updated_at_to: Optional[datetime] = Field(default=None, alias="updatedAtTo")
-    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn", "updatedAtFrom", "updatedAtTo"]
+    on_hold: Optional[StrictBool] = Field(default=None, alias="onHold")
+    __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn", "updatedAtFrom", "updatedAtTo", "onHold"]
 
     model_config = {
         "populate_by_name": True,
@@ -121,7 +122,8 @@ class OrderSearchOrdersRequest(BaseModel):
             "paymentFilter": OrderPaymentFilter.from_dict(obj.get("paymentFilter")) if obj.get("paymentFilter") is not None else None,
             "agentGrn": obj.get("agentGrn"),
             "updatedAtFrom": obj.get("updatedAtFrom"),
-            "updatedAtTo": obj.get("updatedAtTo")
+            "updatedAtTo": obj.get("updatedAtTo"),
+            "onHold": obj.get("onHold")
         })
         return _obj
 

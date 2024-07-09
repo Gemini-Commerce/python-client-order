@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **agent_grn**| **str** |   | [optional]
 **updated_at_from**| **datetime** |   | [optional]
 **updated_at_to**| **datetime** |   | [optional]
+**on_hold**| **bool** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
