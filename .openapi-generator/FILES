@@ -245,9 +245,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_behavior_options_inventory.py
-test/test_behavior_options_inventory_action.py
-test/test_behavior_options_payment_action.py
-test/test_cancel_order_request_behavior_options.py
-test/test_cancel_order_request_behavior_options_payment.py
 tox.ini
