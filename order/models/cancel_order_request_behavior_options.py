@@ -20,23 +20,21 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
-from order.models.cancel_order_request_behavior_options import CancelOrderRequestBehaviorOptions
+from pydantic import BaseModel
+from order.models.behavior_options_inventory import BehaviorOptionsInventory
+from order.models.cancel_order_request_behavior_options_payment import CancelOrderRequestBehaviorOptionsPayment
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class OrderCancelOrderRequest(BaseModel):
+class CancelOrderRequestBehaviorOptions(BaseModel):
     """
-    OrderCancelOrderRequest
+    CancelOrderRequestBehaviorOptions
     """ # noqa: E501
-    tenant_id: StrictStr = Field(alias="tenantId")
-    order_id: StrictStr = Field(alias="orderId")
-    reason: Optional[StrictStr] = None
-    options: Optional[CancelOrderRequestBehaviorOptions] = None
-    __properties: ClassVar[List[str]] = ["tenantId", "orderId", "reason", "options"]
+    inventory: Optional[BehaviorOptionsInventory] = None
+    payment: Optional[CancelOrderRequestBehaviorOptionsPayment] = None
+    __properties: ClassVar[List[str]] = ["inventory", "payment"]
 
     model_config = {
         "populate_by_name": True,
@@ -56,7 +54,7 @@ class OrderCancelOrderRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of OrderCancelOrderRequest from a JSON string"""
+        """Create an instance of CancelOrderRequestBehaviorOptions from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,14 +73,17 @@ class OrderCancelOrderRequest(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of options
-        if self.options:
-            _dict['options'] = self.options.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of inventory
+        if self.inventory:
+            _dict['inventory'] = self.inventory.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of payment
+        if self.payment:
+            _dict['payment'] = self.payment.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of OrderCancelOrderRequest from a dict"""
+        """Create an instance of CancelOrderRequestBehaviorOptions from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +91,8 @@ class OrderCancelOrderRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tenantId": obj.get("tenantId"),
-            "orderId": obj.get("orderId"),
-            "reason": obj.get("reason"),
-            "options": CancelOrderRequestBehaviorOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None
+            "inventory": BehaviorOptionsInventory.from_dict(obj.get("inventory")) if obj.get("inventory") is not None else None,
+            "payment": CancelOrderRequestBehaviorOptionsPayment.from_dict(obj.get("payment")) if obj.get("payment") is not None else None
         })
         return _obj
 

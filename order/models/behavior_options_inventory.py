@@ -20,23 +20,19 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
-from order.models.cancel_order_request_behavior_options import CancelOrderRequestBehaviorOptions
+from pydantic import BaseModel
+from order.models.behavior_options_inventory_action import BehaviorOptionsInventoryAction
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class OrderCancelOrderRequest(BaseModel):
+class BehaviorOptionsInventory(BaseModel):
     """
-    OrderCancelOrderRequest
+    BehaviorOptionsInventory
     """ # noqa: E501
-    tenant_id: StrictStr = Field(alias="tenantId")
-    order_id: StrictStr = Field(alias="orderId")
-    reason: Optional[StrictStr] = None
-    options: Optional[CancelOrderRequestBehaviorOptions] = None
-    __properties: ClassVar[List[str]] = ["tenantId", "orderId", "reason", "options"]
+    action: Optional[BehaviorOptionsInventoryAction] = None
+    __properties: ClassVar[List[str]] = ["action"]
 
     model_config = {
         "populate_by_name": True,
@@ -56,7 +52,7 @@ class OrderCancelOrderRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of OrderCancelOrderRequest from a JSON string"""
+        """Create an instance of BehaviorOptionsInventory from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,14 +71,11 @@ class OrderCancelOrderRequest(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of options
-        if self.options:
-            _dict['options'] = self.options.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of OrderCancelOrderRequest from a dict"""
+        """Create an instance of BehaviorOptionsInventory from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +83,7 @@ class OrderCancelOrderRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tenantId": obj.get("tenantId"),
-            "orderId": obj.get("orderId"),
-            "reason": obj.get("reason"),
-            "options": CancelOrderRequestBehaviorOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None
+            "action": obj.get("action")
         })
         return _obj
 

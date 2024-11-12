@@ -36,6 +36,7 @@ class OrderOrderDataItem(BaseModel):
     id: Optional[StrictStr] = None
     product_grn: Optional[StrictStr] = Field(default=None, alias="productGrn")
     qty_ordered: Optional[StrictInt] = Field(default=None, alias="qtyOrdered")
+    free_qty: Optional[StrictInt] = Field(default=None, alias="freeQty")
     qty_committed: Optional[StrictInt] = Field(default=None, alias="qtyCommitted")
     unit_sale_price: Optional[OrderMoney] = Field(default=None, alias="unitSalePrice")
     unit_list_price: Optional[OrderMoney] = Field(default=None, alias="unitListPrice")
@@ -61,7 +62,7 @@ class OrderOrderDataItem(BaseModel):
     promotion_grn: Optional[List[StrictStr]] = Field(default=None, alias="promotionGrn")
     product_is_virtual: Optional[StrictBool] = Field(default=None, alias="productIsVirtual")
     product_configuration: Optional[List[ItemProductConfigurationStep]] = Field(default=None, alias="productConfiguration")
-    __properties: ClassVar[List[str]] = ["id", "productGrn", "qtyOrdered", "qtyCommitted", "unitSalePrice", "unitListPrice", "unitBasePrice", "unitVatAmount", "rowSalePrice", "rowListPrice", "rowVatAmount", "discountAmount", "rowBasePrice", "unitCustomPrice", "rowCustomPrice", "vatPercentage", "vatInaccurate", "vatCalculated", "productName", "productCode", "productSku", "productOptions", "productImg", "productData", "shipmentInfoReference", "promotionGrn", "productIsVirtual", "productConfiguration"]
+    __properties: ClassVar[List[str]] = ["id", "productGrn", "qtyOrdered", "freeQty", "qtyCommitted", "unitSalePrice", "unitListPrice", "unitBasePrice", "unitVatAmount", "rowSalePrice", "rowListPrice", "rowVatAmount", "discountAmount", "rowBasePrice", "unitCustomPrice", "rowCustomPrice", "vatPercentage", "vatInaccurate", "vatCalculated", "productName", "productCode", "productSku", "productOptions", "productImg", "productData", "shipmentInfoReference", "promotionGrn", "productIsVirtual", "productConfiguration"]
 
     model_config = {
         "populate_by_name": True,
@@ -155,6 +156,7 @@ class OrderOrderDataItem(BaseModel):
             "id": obj.get("id"),
             "productGrn": obj.get("productGrn"),
             "qtyOrdered": obj.get("qtyOrdered"),
+            "freeQty": obj.get("freeQty"),
             "qtyCommitted": obj.get("qtyCommitted"),
             "unitSalePrice": OrderMoney.from_dict(obj.get("unitSalePrice")) if obj.get("unitSalePrice") is not None else None,
             "unitListPrice": OrderMoney.from_dict(obj.get("unitListPrice")) if obj.get("unitListPrice") is not None else None,

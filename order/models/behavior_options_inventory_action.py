@@ -27,28 +27,20 @@ except ImportError:
     from typing_extensions import Self
 
 
-class OrderTransactionType(str, Enum):
+class BehaviorOptionsInventoryAction(str, Enum):
     """
-    OrderTransactionType
+    BehaviorOptionsInventoryAction
     """
 
     """
     allowed enum values
     """
     UNKNOWN = 'UNKNOWN'
-    AUTHORIZATION = 'AUTHORIZATION'
-    CAPTURE = 'CAPTURE'
-    SALE = 'SALE'
-    REFUND = 'REFUND'
-    VOID = 'VOID'
-    FAILED = 'FAILED'
-    PENDING = 'PENDING'
-    FRAUD = 'FRAUD'
-    NOOP = 'NOOP'
+    DO_NOT_HANDLE = 'DO_NOT_HANDLE'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of OrderTransactionType from a JSON string"""
+        """Create an instance of BehaviorOptionsInventoryAction from a JSON string"""
         return cls(json.loads(json_str))
 
 

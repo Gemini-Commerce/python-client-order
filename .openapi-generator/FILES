@@ -3,6 +3,11 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/BehaviorOptionsInventory.md
+docs/BehaviorOptionsInventoryAction.md
+docs/BehaviorOptionsPaymentAction.md
+docs/CancelOrderRequestBehaviorOptions.md
+docs/CancelOrderRequestBehaviorOptionsPayment.md
 docs/CreateOrderRequestInitialPayment.md
 docs/ImportOrderRequestImportedPayment.md
 docs/InitialPaymentInitialTransaction.md
@@ -120,6 +125,11 @@ order/api_response.py
 order/configuration.py
 order/exceptions.py
 order/models/__init__.py
+order/models/behavior_options_inventory.py
+order/models/behavior_options_inventory_action.py
+order/models/behavior_options_payment_action.py
+order/models/cancel_order_request_behavior_options.py
+order/models/cancel_order_request_behavior_options_payment.py
 order/models/create_order_request_initial_payment.py
 order/models/import_order_request_imported_payment.py
 order/models/initial_payment_initial_transaction.py
@@ -235,4 +245,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_behavior_options_inventory.py
+test/test_behavior_options_inventory_action.py
+test/test_behavior_options_payment_action.py
+test/test_cancel_order_request_behavior_options.py
+test/test_cancel_order_request_behavior_options_payment.py
 tox.ini
