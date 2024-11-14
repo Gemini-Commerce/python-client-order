@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **tenant_id**| **str** |   |
 **refund_id**| **str** |   |
 **parent_transaction_id**| **str** |   | [optional]
-**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  | [optional]
+**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  | [optional] [default to OrderTransactionType.UNKNOWN]
 **additional_info**| **str** |   | [optional]
 
 

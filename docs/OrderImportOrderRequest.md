@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **subtotals**| [**Dict[str, OrderDataSubtotal]**](OrderDataSubtotal.md) |   |
 **totals**| [**Dict[str, OrderDataTotal]**](OrderDataTotal.md) |   |
 **status**| **str** |   |
-**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  |
+**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  | [default to OrderCurrency.XXX]
 **vat_included**| **bool** |   | [optional]
 
 

@@ -18,16 +18,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
-from pydantic import Field
 from order.models.order_money import OrderMoney
 from order.models.order_postal_address import OrderPostalAddress
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderDataShipmentInfo(BaseModel):
     """
@@ -47,13 +43,14 @@ class OrderDataShipmentInfo(BaseModel):
     grn: Optional[StrictStr] = None
     from_address: Optional[OrderPostalAddress] = Field(default=None, alias="fromAddress")
     return_address: Optional[OrderPostalAddress] = Field(default=None, alias="returnAddress")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["reference", "code", "method", "title", "additionalInfo", "amount", "fee", "vatAmount", "vatPercentage", "vatInaccurate", "vatCalculated", "grn", "fromAddress", "returnAddress"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +63,7 @@ class OrderDataShipmentInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderDataShipmentInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,11 +76,15 @@ class OrderDataShipmentInfo(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of amount
@@ -101,10 +102,15 @@ class OrderDataShipmentInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of return_address
         if self.return_address:
             _dict['returnAddress'] = self.return_address.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderDataShipmentInfo from a dict"""
         if obj is None:
             return None
@@ -118,16 +124,21 @@ class OrderDataShipmentInfo(BaseModel):
             "method": obj.get("method"),
             "title": obj.get("title"),
             "additionalInfo": obj.get("additionalInfo"),
-            "amount": OrderMoney.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
-            "fee": OrderMoney.from_dict(obj.get("fee")) if obj.get("fee") is not None else None,
-            "vatAmount": OrderMoney.from_dict(obj.get("vatAmount")) if obj.get("vatAmount") is not None else None,
+            "amount": OrderMoney.from_dict(obj["amount"]) if obj.get("amount") is not None else None,
+            "fee": OrderMoney.from_dict(obj["fee"]) if obj.get("fee") is not None else None,
+            "vatAmount": OrderMoney.from_dict(obj["vatAmount"]) if obj.get("vatAmount") is not None else None,
             "vatPercentage": obj.get("vatPercentage"),
             "vatInaccurate": obj.get("vatInaccurate"),
             "vatCalculated": obj.get("vatCalculated"),
             "grn": obj.get("grn"),
-            "fromAddress": OrderPostalAddress.from_dict(obj.get("fromAddress")) if obj.get("fromAddress") is not None else None,
-            "returnAddress": OrderPostalAddress.from_dict(obj.get("returnAddress")) if obj.get("returnAddress") is not None else None
+            "fromAddress": OrderPostalAddress.from_dict(obj["fromAddress"]) if obj.get("fromAddress") is not None else None,
+            "returnAddress": OrderPostalAddress.from_dict(obj["returnAddress"]) if obj.get("returnAddress") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

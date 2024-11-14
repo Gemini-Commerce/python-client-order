@@ -19,14 +19,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from order.models.order_transaction_type import OrderTransactionType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderTransaction(BaseModel):
     """
@@ -35,16 +32,17 @@ class OrderTransaction(BaseModel):
     created_at: Optional[datetime] = Field(default=None, alias="createdAt")
     payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
     id: Optional[StrictStr] = None
-    type: Optional[OrderTransactionType] = None
+    type: Optional[OrderTransactionType] = OrderTransactionType.UNKNOWN
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     child_transactions: Optional[List[OrderTransaction]] = Field(default=None, alias="childTransactions")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["createdAt", "paymentId", "id", "type", "additionalInfo", "childTransactions"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +55,7 @@ class OrderTransaction(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderTransaction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,25 +69,34 @@ class OrderTransaction(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "created_at",
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "created_at",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in child_transactions (list)
         _items = []
         if self.child_transactions:
-            for _item in self.child_transactions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_child_transactions in self.child_transactions:
+                if _item_child_transactions:
+                    _items.append(_item_child_transactions.to_dict())
             _dict['childTransactions'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderTransaction from a dict"""
         if obj is None:
             return None
@@ -101,10 +108,15 @@ class OrderTransaction(BaseModel):
             "createdAt": obj.get("createdAt"),
             "paymentId": obj.get("paymentId"),
             "id": obj.get("id"),
-            "type": obj.get("type"),
+            "type": obj.get("type") if obj.get("type") is not None else OrderTransactionType.UNKNOWN,
             "additionalInfo": obj.get("additionalInfo"),
-            "childTransactions": [OrderTransaction.from_dict(_item) for _item in obj.get("childTransactions")] if obj.get("childTransactions") is not None else None
+            "childTransactions": [OrderTransaction.from_dict(_item) for _item in obj["childTransactions"]] if obj.get("childTransactions") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 # TODO: Rewrite to not use raise_errors

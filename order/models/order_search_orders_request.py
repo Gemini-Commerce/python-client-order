@@ -19,16 +19,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from order.models.order_order_by import OrderOrderBy
 from order.models.order_payment_filter import OrderPaymentFilter
 from order.models.order_status_filter import OrderStatusFilter
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderSearchOrdersRequest(BaseModel):
     """
@@ -47,13 +44,14 @@ class OrderSearchOrdersRequest(BaseModel):
     updated_at_from: Optional[datetime] = Field(default=None, alias="updatedAtFrom")
     updated_at_to: Optional[datetime] = Field(default=None, alias="updatedAtTo")
     on_hold: Optional[StrictBool] = Field(default=None, alias="onHold")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["tenantId", "searchQuery", "pageSize", "pageToken", "orderBy", "statusFilter", "fromDate", "toDate", "paymentFilter", "agentGrn", "updatedAtFrom", "updatedAtTo", "onHold"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +64,7 @@ class OrderSearchOrdersRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderSearchOrdersRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,19 +77,23 @@ class OrderSearchOrdersRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in order_by (list)
         _items = []
         if self.order_by:
-            for _item in self.order_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_order_by in self.order_by:
+                if _item_order_by:
+                    _items.append(_item_order_by.to_dict())
             _dict['orderBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of status_filter
         if self.status_filter:
@@ -99,10 +101,15 @@ class OrderSearchOrdersRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of payment_filter
         if self.payment_filter:
             _dict['paymentFilter'] = self.payment_filter.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderSearchOrdersRequest from a dict"""
         if obj is None:
             return None
@@ -115,16 +122,21 @@ class OrderSearchOrdersRequest(BaseModel):
             "searchQuery": obj.get("searchQuery"),
             "pageSize": obj.get("pageSize"),
             "pageToken": obj.get("pageToken"),
-            "orderBy": [OrderOrderBy.from_dict(_item) for _item in obj.get("orderBy")] if obj.get("orderBy") is not None else None,
-            "statusFilter": OrderStatusFilter.from_dict(obj.get("statusFilter")) if obj.get("statusFilter") is not None else None,
+            "orderBy": [OrderOrderBy.from_dict(_item) for _item in obj["orderBy"]] if obj.get("orderBy") is not None else None,
+            "statusFilter": OrderStatusFilter.from_dict(obj["statusFilter"]) if obj.get("statusFilter") is not None else None,
             "fromDate": obj.get("fromDate"),
             "toDate": obj.get("toDate"),
-            "paymentFilter": OrderPaymentFilter.from_dict(obj.get("paymentFilter")) if obj.get("paymentFilter") is not None else None,
+            "paymentFilter": OrderPaymentFilter.from_dict(obj["paymentFilter"]) if obj.get("paymentFilter") is not None else None,
             "agentGrn": obj.get("agentGrn"),
             "updatedAtFrom": obj.get("updatedAtFrom"),
             "updatedAtTo": obj.get("updatedAtTo"),
             "onHold": obj.get("onHold")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

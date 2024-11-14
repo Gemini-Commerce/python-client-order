@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **payments_info**| [**List[OrderDataPaymentInfo]**](OrderDataPaymentInfo.md) |   | [optional]
 **shipments_info**| [**List[OrderDataShipmentInfo]**](OrderDataShipmentInfo.md) |   | [optional]
 **promotions**| [**List[OrderDataPromotionInfo]**](OrderDataPromotionInfo.md) |   | [optional]
-**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  | [optional]
+**currency**| [**OrderCurrency**](OrderCurrency.md) |  for more information please, see Model/OrderCurrency.php  | [optional] [default to OrderCurrency.XXX]
 **subtotals**| [**Dict[str, OrderDataSubtotal]**](OrderDataSubtotal.md) |   | [optional]
 **totals**| [**Dict[str, OrderDataTotal]**](OrderDataTotal.md) |   | [optional]
 **vat_included**| **bool** |   | [optional]

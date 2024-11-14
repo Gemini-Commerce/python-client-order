@@ -18,27 +18,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
 from order.models.order_fulfillment import OrderFulfillment
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderListFulfillmentsResponse(BaseModel):
     """
     OrderListFulfillmentsResponse
     """ # noqa: E501
     fulfillments: Optional[List[OrderFulfillment]] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["fulfillments"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +49,7 @@ class OrderListFulfillmentsResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderListFulfillmentsResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,24 +62,33 @@ class OrderListFulfillmentsResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in fulfillments (list)
         _items = []
         if self.fulfillments:
-            for _item in self.fulfillments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_fulfillments in self.fulfillments:
+                if _item_fulfillments:
+                    _items.append(_item_fulfillments.to_dict())
             _dict['fulfillments'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderListFulfillmentsResponse from a dict"""
         if obj is None:
             return None
@@ -90,8 +97,13 @@ class OrderListFulfillmentsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "fulfillments": [OrderFulfillment.from_dict(_item) for _item in obj.get("fulfillments")] if obj.get("fulfillments") is not None else None
+            "fulfillments": [OrderFulfillment.from_dict(_item) for _item in obj["fulfillments"]] if obj.get("fulfillments") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -18,10 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from order.models.create_order_request_initial_payment import CreateOrderRequestInitialPayment
 from order.models.order_currency import OrderCurrency
 from order.models.order_data_customer_info import OrderDataCustomerInfo
@@ -32,10 +30,8 @@ from order.models.order_data_subtotal import OrderDataSubtotal
 from order.models.order_data_total import OrderDataTotal
 from order.models.order_order_data_item import OrderOrderDataItem
 from order.models.order_postal_address import OrderPostalAddress
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderCreateOrderRequest(BaseModel):
     """
@@ -61,13 +57,14 @@ class OrderCreateOrderRequest(BaseModel):
     cart_grn: Optional[StrictStr] = Field(default=None, alias="cartGrn")
     on_hold: Optional[StrictBool] = Field(default=None, alias="onHold")
     notes: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["tenantId", "number", "channel", "market", "locale", "items", "paymentsInfo", "shipmentsInfo", "promotions", "payments", "currency", "subtotals", "totals", "vatIncluded", "billingAddress", "shippingAddress", "customerInfo", "cartGrn", "onHold", "notes"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -80,7 +77,7 @@ class OrderCreateOrderRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderCreateOrderRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -93,61 +90,65 @@ class OrderCreateOrderRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
-            for _item in self.items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
             _dict['items'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in payments_info (list)
         _items = []
         if self.payments_info:
-            for _item in self.payments_info:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_payments_info in self.payments_info:
+                if _item_payments_info:
+                    _items.append(_item_payments_info.to_dict())
             _dict['paymentsInfo'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in shipments_info (list)
         _items = []
         if self.shipments_info:
-            for _item in self.shipments_info:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_shipments_info in self.shipments_info:
+                if _item_shipments_info:
+                    _items.append(_item_shipments_info.to_dict())
             _dict['shipmentsInfo'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in promotions (list)
         _items = []
         if self.promotions:
-            for _item in self.promotions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_promotions in self.promotions:
+                if _item_promotions:
+                    _items.append(_item_promotions.to_dict())
             _dict['promotions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in payments (list)
         _items = []
         if self.payments:
-            for _item in self.payments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_payments in self.payments:
+                if _item_payments:
+                    _items.append(_item_payments.to_dict())
             _dict['payments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in subtotals (dict)
         _field_dict = {}
         if self.subtotals:
-            for _key in self.subtotals:
-                if self.subtotals[_key]:
-                    _field_dict[_key] = self.subtotals[_key].to_dict()
+            for _key_subtotals in self.subtotals:
+                if self.subtotals[_key_subtotals]:
+                    _field_dict[_key_subtotals] = self.subtotals[_key_subtotals].to_dict()
             _dict['subtotals'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in totals (dict)
         _field_dict = {}
         if self.totals:
-            for _key in self.totals:
-                if self.totals[_key]:
-                    _field_dict[_key] = self.totals[_key].to_dict()
+            for _key_totals in self.totals:
+                if self.totals[_key_totals]:
+                    _field_dict[_key_totals] = self.totals[_key_totals].to_dict()
             _dict['totals'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of billing_address
         if self.billing_address:
@@ -158,10 +159,15 @@ class OrderCreateOrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of customer_info
         if self.customer_info:
             _dict['customerInfo'] = self.customer_info.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderCreateOrderRequest from a dict"""
         if obj is None:
             return None
@@ -175,32 +181,37 @@ class OrderCreateOrderRequest(BaseModel):
             "channel": obj.get("channel"),
             "market": obj.get("market"),
             "locale": obj.get("locale"),
-            "items": [OrderOrderDataItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
-            "paymentsInfo": [OrderDataPaymentInfo.from_dict(_item) for _item in obj.get("paymentsInfo")] if obj.get("paymentsInfo") is not None else None,
-            "shipmentsInfo": [OrderDataShipmentInfo.from_dict(_item) for _item in obj.get("shipmentsInfo")] if obj.get("shipmentsInfo") is not None else None,
-            "promotions": [OrderDataPromotionInfo.from_dict(_item) for _item in obj.get("promotions")] if obj.get("promotions") is not None else None,
-            "payments": [CreateOrderRequestInitialPayment.from_dict(_item) for _item in obj.get("payments")] if obj.get("payments") is not None else None,
-            "currency": obj.get("currency"),
+            "items": [OrderOrderDataItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "paymentsInfo": [OrderDataPaymentInfo.from_dict(_item) for _item in obj["paymentsInfo"]] if obj.get("paymentsInfo") is not None else None,
+            "shipmentsInfo": [OrderDataShipmentInfo.from_dict(_item) for _item in obj["shipmentsInfo"]] if obj.get("shipmentsInfo") is not None else None,
+            "promotions": [OrderDataPromotionInfo.from_dict(_item) for _item in obj["promotions"]] if obj.get("promotions") is not None else None,
+            "payments": [CreateOrderRequestInitialPayment.from_dict(_item) for _item in obj["payments"]] if obj.get("payments") is not None else None,
+            "currency": obj.get("currency") if obj.get("currency") is not None else OrderCurrency.XXX,
             "subtotals": dict(
                 (_k, OrderDataSubtotal.from_dict(_v))
-                for _k, _v in obj.get("subtotals").items()
+                for _k, _v in obj["subtotals"].items()
             )
             if obj.get("subtotals") is not None
             else None,
             "totals": dict(
                 (_k, OrderDataTotal.from_dict(_v))
-                for _k, _v in obj.get("totals").items()
+                for _k, _v in obj["totals"].items()
             )
             if obj.get("totals") is not None
             else None,
             "vatIncluded": obj.get("vatIncluded"),
-            "billingAddress": OrderPostalAddress.from_dict(obj.get("billingAddress")) if obj.get("billingAddress") is not None else None,
-            "shippingAddress": OrderPostalAddress.from_dict(obj.get("shippingAddress")) if obj.get("shippingAddress") is not None else None,
-            "customerInfo": OrderDataCustomerInfo.from_dict(obj.get("customerInfo")) if obj.get("customerInfo") is not None else None,
+            "billingAddress": OrderPostalAddress.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "shippingAddress": OrderPostalAddress.from_dict(obj["shippingAddress"]) if obj.get("shippingAddress") is not None else None,
+            "customerInfo": OrderDataCustomerInfo.from_dict(obj["customerInfo"]) if obj.get("customerInfo") is not None else None,
             "cartGrn": obj.get("cartGrn"),
             "onHold": obj.get("onHold"),
             "notes": obj.get("notes")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -67,8 +67,6 @@ Approve Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_approve_order_request import OrderApproveOrderRequest
 from order.rest import ApiException
@@ -149,8 +147,6 @@ Assign Shipment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_assign_shipment_request import OrderAssignShipmentRequest
 from order.rest import ApiException
@@ -231,8 +227,6 @@ Calculate Refund
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_calculate_refund_request import OrderCalculateRefundRequest
 from order.models.order_calculate_refund_response import OrderCalculateRefundResponse
@@ -314,8 +308,6 @@ Cancel Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_cancel_fulfillment_request import OrderCancelFulfillmentRequest
 from order.rest import ApiException
@@ -396,8 +388,6 @@ Cancel Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_cancel_order_request import OrderCancelOrderRequest
 from order.rest import ApiException
@@ -478,8 +468,6 @@ Cancel Shipment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_cancel_shipment_request import OrderCancelShipmentRequest
 from order.rest import ApiException
@@ -560,8 +548,6 @@ Complete Shipment Packing
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_complete_shipment_packing_request import OrderCompleteShipmentPackingRequest
 from order.rest import ApiException
@@ -642,8 +628,6 @@ Create Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_fulfillment_request import OrderCreateFulfillmentRequest
 from order.models.order_fulfillment import OrderFulfillment
@@ -725,8 +709,6 @@ Create Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_order_request import OrderCreateOrderRequest
 from order.models.order_order_data import OrderOrderData
@@ -808,8 +790,6 @@ Create Order History
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_history_request import OrderCreateHistoryRequest
 from order.models.order_data_history import OrderDataHistory
@@ -891,8 +871,6 @@ Create Payment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_payment_request import OrderCreatePaymentRequest
 from order.models.order_payment import OrderPayment
@@ -974,8 +952,6 @@ Create Payment Transaction
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_payment_transaction_request import OrderCreatePaymentTransactionRequest
 from order.models.order_transaction import OrderTransaction
@@ -1057,8 +1033,6 @@ Create Refund
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_refund_request import OrderCreateRefundRequest
 from order.models.order_refund import OrderRefund
@@ -1140,8 +1114,6 @@ Create Refund Transaction
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_refund_transaction_request import OrderCreateRefundTransactionRequest
 from order.models.order_transaction import OrderTransaction
@@ -1223,8 +1195,6 @@ Create Shipment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_create_shipment_request import OrderCreateShipmentRequest
 from order.models.order_shipment import OrderShipment
@@ -1306,8 +1276,6 @@ Delete Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_delete_order_request import OrderDeleteOrderRequest
 from order.rest import ApiException
@@ -1388,8 +1356,6 @@ Get Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_fulfillment import OrderFulfillment
 from order.models.order_get_fulfillment_request import OrderGetFulfillmentRequest
@@ -1471,8 +1437,6 @@ Get Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_order_request import OrderGetOrderRequest
 from order.models.order_order_data import OrderOrderData
@@ -1554,8 +1518,6 @@ Get Order by Cart ID
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_order_by_cart_id_request import OrderGetOrderByCartIdRequest
 from order.models.order_order_data import OrderOrderData
@@ -1637,8 +1599,6 @@ Get Order by Order Number
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_order_by_order_number_request import OrderGetOrderByOrderNumberRequest
 from order.models.order_order_data import OrderOrderData
@@ -1720,8 +1680,6 @@ Get Payment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_payment_request import OrderGetPaymentRequest
 from order.models.order_payment import OrderPayment
@@ -1803,8 +1761,6 @@ Get Shipment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_shipment_request import OrderGetShipmentRequest
 from order.models.order_shipment import OrderShipment
@@ -1886,8 +1842,6 @@ Get Transaction
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_get_transaction_request import OrderGetTransactionRequest
 from order.models.order_transaction import OrderTransaction
@@ -1969,8 +1923,6 @@ Hold Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_hold_order_request import OrderHoldOrderRequest
 from order.rest import ApiException
@@ -2051,8 +2003,6 @@ Import Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_import_order_request import OrderImportOrderRequest
 from order.models.order_order_data import OrderOrderData
@@ -2134,8 +2084,6 @@ List Fulfillments
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_list_fulfillments_request import OrderListFulfillmentsRequest
 from order.models.order_list_fulfillments_response import OrderListFulfillmentsResponse
@@ -2217,8 +2165,6 @@ List Orders
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_list_orders_request import OrderListOrdersRequest
 from order.models.order_list_orders_response import OrderListOrdersResponse
@@ -2300,8 +2246,6 @@ List Orders by Customer
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_list_orders_by_customer_request import OrderListOrdersByCustomerRequest
 from order.models.order_list_orders_by_customer_response import OrderListOrdersByCustomerResponse
@@ -2383,8 +2327,6 @@ List Orders by Numbers
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_list_orders_by_numbers_request import OrderListOrdersByNumbersRequest
 from order.models.order_list_orders_by_numbers_response import OrderListOrdersByNumbersResponse
@@ -2466,8 +2408,6 @@ List Shipments
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_list_shipments_request import OrderListShipmentsRequest
 from order.models.order_list_shipments_response import OrderListShipmentsResponse
@@ -2549,8 +2489,6 @@ Documents
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_add_document_request import OrderAddDocumentRequest
 from order.rest import ApiException
@@ -2629,8 +2567,6 @@ Name | Type | Description  | Notes
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_remove_document_by_code_request import OrderRemoveDocumentByCodeRequest
 from order.rest import ApiException
@@ -2708,8 +2644,6 @@ Print Orders Labels
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_print_orders_labels_request import OrderPrintOrdersLabelsRequest
 from order.models.order_print_orders_labels_response import OrderPrintOrdersLabelsResponse
@@ -2791,8 +2725,6 @@ Quash Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_quash_fulfillment_request import OrderQuashFulfillmentRequest
 from order.rest import ApiException
@@ -2873,8 +2805,6 @@ Quash Shipment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_quash_shipment_request import OrderQuashShipmentRequest
 from order.rest import ApiException
@@ -2955,8 +2885,6 @@ Receive Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_receive_fulfillment_request import OrderReceiveFulfillmentRequest
 from order.rest import ApiException
@@ -3037,8 +2965,6 @@ Report Fulfillment Error
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_report_fulfillment_error_request import OrderReportFulfillmentErrorRequest
 from order.rest import ApiException
@@ -3119,8 +3045,6 @@ Report Fulfillment Not Resolvable
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_report_fulfillment_not_resolvable_request import OrderReportFulfillmentNotResolvableRequest
 from order.rest import ApiException
@@ -3201,8 +3125,6 @@ Report Fulfillment Ready
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_report_fulfillment_ready_request import OrderReportFulfillmentReadyRequest
 from order.rest import ApiException
@@ -3283,8 +3205,6 @@ Report Shipment Delivery
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_report_shipment_delivery_request import OrderReportShipmentDeliveryRequest
 from order.rest import ApiException
@@ -3365,8 +3285,6 @@ Report Shipment Missing Stock
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_report_shipment_missing_stock_request import OrderReportShipmentMissingStockRequest
 from order.rest import ApiException
@@ -3447,8 +3365,6 @@ Resolve Shipment Missing Stock
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_resolve_shipment_missing_stock_request import OrderResolveShipmentMissingStockRequest
 from order.rest import ApiException
@@ -3529,8 +3445,6 @@ Retry Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_retry_fulfillment_request import OrderRetryFulfillmentRequest
 from order.rest import ApiException
@@ -3611,8 +3525,6 @@ Search Orders
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_search_orders_request import OrderSearchOrdersRequest
 from order.models.order_search_orders_response import OrderSearchOrdersResponse
@@ -3694,8 +3606,6 @@ Send Fulfillment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_send_fulfillment_request import OrderSendFulfillmentRequest
 from order.rest import ApiException
@@ -3776,8 +3686,6 @@ Send Order Notification
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_send_order_notification_request import OrderSendOrderNotificationRequest
 from order.rest import ApiException
@@ -3858,8 +3766,6 @@ Start Fulfillment Processing
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_start_fulfillment_processing_request import OrderStartFulfillmentProcessingRequest
 from order.rest import ApiException
@@ -3940,8 +3846,6 @@ Start Shipment Processing
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_start_shipment_processing_request import OrderStartShipmentProcessingRequest
 from order.rest import ApiException
@@ -4022,8 +3926,6 @@ Unhold Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_unhold_order_request import OrderUnholdOrderRequest
 from order.rest import ApiException
@@ -4104,8 +4006,6 @@ Update Order
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_order_data import OrderOrderData
 from order.models.order_update_order_request import OrderUpdateOrderRequest
@@ -4187,8 +4087,6 @@ Update Payment
 * Api Key Authentication (Authorization):
 
 ```python
-import time
-import os
 import order
 from order.models.order_payment import OrderPayment
 from order.models.order_update_payment_request import OrderUpdatePaymentRequest

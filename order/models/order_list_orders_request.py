@@ -18,16 +18,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from order.models.order_order_by import OrderOrderBy
 from order.models.order_status_filter import OrderStatusFilter
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderListOrdersRequest(BaseModel):
     """
@@ -38,13 +34,14 @@ class OrderListOrdersRequest(BaseModel):
     page_token: Optional[StrictStr] = Field(default=None, description="A page token, received from a previous `ListOrders` call. Provide this to retrieve the subsequent page.   When paginating, all other parameters provided to `ListOrders` must match the call that provided the page token.", alias="pageToken")
     order_by: Optional[List[OrderOrderBy]] = Field(default=None, alias="orderBy")
     status_filter: Optional[OrderStatusFilter] = Field(default=None, alias="statusFilter")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["tenantId", "pageSize", "pageToken", "orderBy", "statusFilter"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class OrderListOrdersRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderListOrdersRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,27 +67,36 @@ class OrderListOrdersRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in order_by (list)
         _items = []
         if self.order_by:
-            for _item in self.order_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_order_by in self.order_by:
+                if _item_order_by:
+                    _items.append(_item_order_by.to_dict())
             _dict['orderBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of status_filter
         if self.status_filter:
             _dict['statusFilter'] = self.status_filter.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderListOrdersRequest from a dict"""
         if obj is None:
             return None
@@ -102,9 +108,14 @@ class OrderListOrdersRequest(BaseModel):
             "tenantId": obj.get("tenantId"),
             "pageSize": obj.get("pageSize"),
             "pageToken": obj.get("pageToken"),
-            "orderBy": [OrderOrderBy.from_dict(_item) for _item in obj.get("orderBy")] if obj.get("orderBy") is not None else None,
-            "statusFilter": OrderStatusFilter.from_dict(obj.get("statusFilter")) if obj.get("statusFilter") is not None else None
+            "orderBy": [OrderOrderBy.from_dict(_item) for _item in obj["orderBy"]] if obj.get("orderBy") is not None else None,
+            "statusFilter": OrderStatusFilter.from_dict(obj["statusFilter"]) if obj.get("statusFilter") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

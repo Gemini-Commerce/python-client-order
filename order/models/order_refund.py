@@ -19,15 +19,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from order.models.order_refund_amount import OrderRefundAmount
 from order.models.order_refund_item import OrderRefundItem
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderRefund(BaseModel):
     """
@@ -41,13 +38,14 @@ class OrderRefund(BaseModel):
     note: Optional[StrictStr] = None
     additional_info: Optional[StrictStr] = Field(default=None, alias="additionalInfo")
     transaction_ids: Optional[List[StrictStr]] = Field(default=None, alias="transactionIds")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["createdAt", "paymentId", "id", "items", "amounts", "note", "additionalInfo", "transactionIds"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -60,7 +58,7 @@ class OrderRefund(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderRefund from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -74,32 +72,41 @@ class OrderRefund(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "created_at",
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "created_at",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
-            for _item in self.items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
             _dict['items'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in amounts (list)
         _items = []
         if self.amounts:
-            for _item in self.amounts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_amounts in self.amounts:
+                if _item_amounts:
+                    _items.append(_item_amounts.to_dict())
             _dict['amounts'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderRefund from a dict"""
         if obj is None:
             return None
@@ -111,12 +118,17 @@ class OrderRefund(BaseModel):
             "createdAt": obj.get("createdAt"),
             "paymentId": obj.get("paymentId"),
             "id": obj.get("id"),
-            "items": [OrderRefundItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
-            "amounts": [OrderRefundAmount.from_dict(_item) for _item in obj.get("amounts")] if obj.get("amounts") is not None else None,
+            "items": [OrderRefundItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "amounts": [OrderRefundAmount.from_dict(_item) for _item in obj["amounts"]] if obj.get("amounts") is not None else None,
             "note": obj.get("note"),
             "additionalInfo": obj.get("additionalInfo"),
             "transactionIds": obj.get("transactionIds")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

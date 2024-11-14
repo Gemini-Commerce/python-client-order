@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id**| **str** |   |
 **payment_id**| **str** |   |
-**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  |
+**type**| [**OrderTransactionType**](OrderTransactionType.md) |  for more information please, see Model/OrderTransactionType.php  | [default to OrderTransactionType.UNKNOWN]
 **additional_info**| **str** |   | [optional]
 
 
